@@ -1,0 +1,24 @@
+# Day 95: Creating a Microservice Client
+
+**Topics Covered:**
+1. Creating a `user-service`.
+2. Adding `spring-cloud-starter-netflix-eureka-client`.
+3. The `@EnableDiscoveryClient` annotation.
+4. Connecting to Eureka Server.
+
+**Learning Summary:**
+I created my first actual microservice: `user-service`. I wanted it to automatically tell the Eureka Server that it is alive.
+1. Added the Eureka Client dependency.
+2. In `application.yml`, I gave it a name (`spring.application.name=user-service`) and pointed it to the Eureka URL (`http://localhost:8761/eureka`).
+3. Ran the application.
+
+**Code Snippet:**
+```yaml
+spring:
+  application:
+    name: user-service # Important ID for discovery
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
