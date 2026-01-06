@@ -1,0 +1,39 @@
+#### **Day 68: Sending Data (POST Request Integration)**
+```markdown
+# Day 68: Submitting Forms to Spring Boot
+
+**Topics Covered:**
+1. Creating an HTML Form.
+2. Intercepting Form Submit event in JS.
+3. Constructing a JSON object from form inputs.
+4. Using `fetch()` with `method: 'POST'`.
+
+**Learning Summary:**
+Today I built a "Add User" feature. I learned that to send data, we must specify `method: 'POST'`, add the header `Content-Type: application/json`, and convert the JS object to a string using `JSON.stringify()`. If the backend saves it successfully, I refresh the list to show the new user.
+
+**Code Snippet (Frontend - JS):**
+```javascript
+const form = document.getElementById("userForm");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Stop page reload
+
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value
+    };
+
+    const response = await fetch("http://localhost:8080/api/users", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+        alert("User Added Successfully!");
+    } else {
+        alert("Failed to add user.");
+    }
+});
