@@ -1,0 +1,36 @@
+#### **Day 48: Dependency Injection (DI)**
+
+```markdown
+# Day 48: Mastering Dependency Injection
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Types of DI: Constructor, Setter, and Field Injection.
+2. The `@Autowired` annotation.
+3. Why Constructor Injection is best practice.
+4. Handling multiple implementations with `@Qualifier`.
+
+**Learning Summary:**
+IoC is the concept, and **Dependency Injection (DI)** is the design pattern that implements it. Today I learned how Spring "injects" dependencies.
+- **Field Injection:** Adding `@Autowired` directly on the variable (easiest, but not recommended).
+- **Constructor Injection:** Passing dependencies via the constructor (Best for mandatory dependencies).
+
+**Code Snippet:**
+```java
+@Component
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    // Constructor Injection (Best Practice)
+    // Spring automatically finds the UserRepository bean and passes it here
+    @Autowired 
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void saveUser() {
+        userRepository.save();
+    }
+}
