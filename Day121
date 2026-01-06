@@ -1,0 +1,17 @@
+# Day 121: Introduction to Container Orchestration
+
+**Topics Covered:**
+1. Limits of Docker & Docker Compose (Manual management).
+2. What is Kubernetes? (The Pilot of containers).
+3. Architecture: Master Node (Control Plane) vs Worker Nodes.
+4. Installing Minikube (Local K8s Cluster).
+
+**Learning Summary:**
+Today I started the most in-demand skill in DevOps: **Kubernetes**.
+I learned that while Docker creates the container, managing 100 containers manually is impossible. If a container crashes, I have to restart it. Kubernetes does this automatically. It is a "Container Orchestrator".
+- **Master Node:** The brain (Make decisions).
+- **Worker Node:** The body (Does the work/runs apps).
+I installed **Minikube** to practice K8s on my laptop.
+
+**Key Concept:**
+Kubernetes is self-healing. If I tell it "Keep 3 instances running", and one crashes, it instantly starts a new one to maintain the count.
