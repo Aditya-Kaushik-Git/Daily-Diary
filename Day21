@@ -1,0 +1,39 @@
+
+# Day 21: Functional Programming with Lambda Expressions
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Introduction to Functional Programming in Java.
+2. Lambda Expression Syntax `() -> {}`.
+3. Converting Anonymous Inner Classes to Lambdas.
+4. Using Lambdas with the `Runnable` interface.
+
+**Learning Summary:**
+Today I started learning Java 8 features, which introduced a functional style of programming to Java. The biggest change is **Lambda Expressions**, which allow us to write concise code. Instead of writing bulky anonymous classes for interfaces with just one method, I can now use a simple arrow syntax.
+
+**Code Snippet:**
+```java
+@FunctionalInterface
+interface MathOperation {
+    int operate(int a, int b);
+}
+
+public class Day21 {
+    public static void main(String[] args) {
+        // Traditional way (Anonymous Class) - bulky
+        MathOperation addOld = new MathOperation() {
+            @Override
+            public int operate(int a, int b) {
+                return a + b;
+            }
+        };
+
+        // Java 8 Way (Lambda Expression) - clean
+        MathOperation addNew = (a, b) -> a + b;
+        MathOperation multiply = (a, b) -> a * b;
+
+        System.out.println("Addition: " + addNew.operate(5, 3));
+        System.out.println("Multiplication: " + multiply.operate(5, 3));
+    }
+}
