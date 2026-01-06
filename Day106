@@ -1,0 +1,15 @@
+# Day 106: Moving to Event-Driven Architecture
+
+**Topics Covered:**
+1. Synchronous (REST) vs Asynchronous (Messaging).
+2. Tightly Coupled vs Loosely Coupled systems.
+3. What is an Event? (e.g., `OrderPlacedEvent`).
+4. Why Async is better for notifications (Email/SMS).
+
+**Learning Summary:**
+Today I learned a major architectural shift.
+- **REST (Sync):** If User places an order, the `Order-Service` calls `Notification-Service` to send an email. If `Notification-Service` is down, the Order fails. This is bad.
+- **Messaging (Async):** `Order-Service` places the order and shouts "Order Placed!" into a queue. The `Notification-Service` listens to this and sends an email whenever it is ready. The Order succeeds even if the email service is down.
+
+**Concept:**
+"Fire and Forget". The producer doesn't wait for a response.
