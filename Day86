@@ -1,0 +1,29 @@
+# Day 86: How Maven Builds Projects
+
+**Topics Covered:**
+1. What is Maven? (Build automation tool).
+2. The `pom.xml` file structure (Project Object Model).
+3. Build Lifecycle Phases: `clean`, `compile`, `test`, `package`, `install`.
+4. Dependency Scope (`compile` vs `test` vs `runtime`).
+
+**Learning Summary:**
+I used to just click the "Run" button in IntelliJ, but today I learned what happens behind the scenes. Maven manages the build process.
+- **clean:** Deletes the `target` folder (removes old files).
+- **compile:** Converts `.java` to `.class`.
+- **test:** Runs JUnit tests automatically.
+- **package:** Bundles compiled code into a JAR or WAR file.
+
+**Code Snippet:**
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
