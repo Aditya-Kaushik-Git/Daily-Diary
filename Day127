@@ -1,0 +1,30 @@
+# Day 127: My First Workflow
+
+**Topics Covered:**
+1. The `.github/workflows` directory.
+2. Structure of a YAML workflow file.
+3. Concepts: **Events** (Push/Pull Request), **Jobs**, **Steps**, **Runners**.
+4. Writing a simple "Hello World" pipeline.
+
+**Learning Summary:**
+Today I created my first automation script. I made a folder `.github/workflows` and added a file `maven.yml`.
+- **Event:** I told it to run on `push` to the `main` branch.
+- **Runner:** I specified `runs-on: ubuntu-latest` (GitHub provides a fresh Ubuntu VM for every run).
+- **Steps:** I added simple commands to check out the code and print a message.
+
+**Code Snippet (`ci.yml`):**
+```yaml
+name: Java CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3 # Clones my repo
+    - name: Run a one-line script
+      run: echo Hello, GitHub Actions!
