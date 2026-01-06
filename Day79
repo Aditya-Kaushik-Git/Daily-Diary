@@ -1,0 +1,39 @@
+#### **Day 79: The JWT Authentication Filter**
+```markdown
+# Day 79: Intercepting Requests
+
+**Topics Covered:**
+1. What is a Filter? (`OncePerRequestFilter`).
+2. Extracting the "Authorization" header.
+3. Validating the Bearer Token.
+4. Setting the Authentication in SecurityContext.
+
+**Learning Summary:**
+Just generating a token isn't enough; we need to check it. Today I created a Filter that runs before every request. It checks if the request has a Header `Authorization: Bearer <token>`. If the token is valid, it tells Spring Security "This user is good to go," and the request proceeds to the Controller.
+
+**Code Snippet:**
+```java
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+    @Autowired private JwtUtil jwtUtil;
+    @Autowired private CustomUserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws ServletException, IOException {
+        
+        String authHeader = request.getHeader("Authorization");
+        
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            String username = jwtUtil.extractUsername(token);
+            
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                // (Validation logic here...)
+                // If valid, set authentication context
+            }
+        }
+        chain.doFilter(request, response);
+    }
+}
