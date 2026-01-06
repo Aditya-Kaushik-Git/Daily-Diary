@@ -1,0 +1,16 @@
+# Day 115: Stateless Sessions with Redis
+
+**Topics Covered:**
+1. The problem with `HttpSession` in Microservices.
+2. Sticky Sessions vs Distributed Sessions.
+3. Adding `spring-session-data-redis`.
+4. Sharing login state across multiple instances.
+
+**Learning Summary:**
+If I run 2 instances of `User-Service` behind a Load Balancer, a user might login on Instance A, but the next request goes to Instance B which doesn't know the user is logged in.
+Today I solved this by storing the Session ID in **Redis** instead of the server's RAM. Now, both instances look at Redis to check if the user is logged in.
+
+**Implementation:**
+I just added the dependency `spring-session-data-redis` and configured:
+```properties
+spring.session.store-type=redis
