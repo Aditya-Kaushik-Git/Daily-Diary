@@ -1,0 +1,16 @@
+# Day 138: Writing Clean Code
+
+**Topics Covered:**
+1. Why Design Patterns matter? (Standard solutions to common problems).
+2. **Singleton Pattern:** Only one instance (e.g., Spring Beans).
+3. **Factory Pattern:** Creating objects without specifying exact class.
+4. **Observer Pattern:** Event Handling (like Kafka consumers).
+
+**Learning Summary:**
+Now that I know how to build systems, I need to write code that is maintainable.
+- **Singleton:** Ensuring a class has only one instance (used in Database Connections).
+- **Builder:** Used mainly in Lombok (`User.builder().name("Amit").build()`) to create complex objects clearly.
+- **Strategy:** Swapping algorithms at runtime (e.g., Switching between PayPal and Stripe payment methods).
+
+**Key Takeaway:**
+Patterns are not code; they are blueprints for solving recurring architectural problems.
