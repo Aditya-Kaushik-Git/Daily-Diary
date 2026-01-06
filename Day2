@@ -1,0 +1,31 @@
+#### **Day 2: Variables and Data Types**
+```markdown
+# Day 2: Primitives and Non-Primitives in Java
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Primitive Data Types: int, double, boolean, char, byte, long.
+2. Non-Primitive Data Types: String, Arrays.
+3. Variable naming conventions (camelCase).
+4. Type Casting (Implicit vs Explicit).
+
+**Learning Summary:**
+I explored how Java stores data in memory. I learned that `int` is for whole numbers while `double` is for decimals. A key takeaway was "Type Casting" – converting a larger type (double) to a smaller type (int) requires explicit casting because data might be lost.
+
+**Code Snippet:**
+```java
+public class Day2 {
+    public static void main(String[] args) {
+        int age = 22;
+        double salary = 45000.50;
+        boolean isJavaFun = true;
+        
+        // Explicit Casting
+        int roundedSalary = (int) salary; 
+        
+        System.out.println("Age: " + age);
+        System.out.println("Rounded Salary: " + roundedSalary);
+        System.out.println("Is Java Fun? " + isJavaFun);
+    }
+}
