@@ -1,0 +1,31 @@
+#### **Day 47: Inversion of Control (IoC)**
+
+```markdown
+# Day 47: The Spring IoC Container
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is Inversion of Control? (Don't call us, we'll call you).
+2. The `ApplicationContext` (The Container).
+3. What is a Spring Bean?
+4. The shift from `new Class()` to Spring management.
+
+**Learning Summary:**
+In Core Java, if I needed an object, I used `new Car()`. In Spring, I learned that we shouldn't create objects manually. Instead, we give that responsibility to the **IoC Container**. The Container creates objects (called Beans), manages them, and destroys them when done. This makes the application loosely coupled and easier to test.
+
+**Code Snippet:**
+```java
+// Traditional Approach (Tightly Coupled)
+class Car {
+    Engine engine = new Engine(); // Hardcoded dependency
+}
+
+// Spring Approach (IoC)
+@Component
+class Car {
+    // The container will provide the Engine object
+    // We don't say 'new Engine()' here.
+    @Autowired
+    Engine engine;
+}
