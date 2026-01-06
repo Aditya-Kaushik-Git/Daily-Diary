@@ -1,0 +1,32 @@
+#### **Day 37: Data Types and Operators**
+```markdown
+# Day 37: Dynamic Typing in JavaScript
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Dynamic Typing (No need to declare int/string).
+2. Primitive Types: String, Number, Boolean, Undefined, Null.
+3. Template Literals (Backticks `` ` ``).
+4. Equality Operators: `==` vs `===`.
+
+**Learning Summary:**
+Coming from Java, JavaScript feels very loose. I don't need to say `int x = 10`, I just say `let x = 10`. The most important thing I learned today is the difference between `==` (checks value only) and `===` (checks value AND data type). Using `===` prevents weird bugs.
+
+**Code Snippet:**
+```javascript
+let score = "100"; // String
+let bonus = 100;   // Number
+
+// Loose Equality (Value matches)
+if (score == bonus) {
+    console.log("Values match!"); // This prints
+}
+
+// Strict Equality (Type doesn't match)
+if (score === bonus) {
+    console.log("Types match!"); // This won't print
+}
+
+// Template Literals (Easier string concatenation)
+console.log(`Your final score is ${bonus} points.`);
