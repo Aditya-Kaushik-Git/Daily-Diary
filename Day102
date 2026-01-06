@@ -1,0 +1,24 @@
+# Day 102: Resilience4j and Circuit States
+
+**Topics Covered:**
+1. Adding `spring-cloud-starter-circuitbreaker-resilience4j`.
+2. The 3 States: **CLOSED** (Working), **OPEN** (Failing), **HALF-OPEN** (Testing).
+3. Configuring failure thresholds.
+4. The `@CircuitBreaker` annotation.
+
+**Learning Summary:**
+Today I added a safety switch to my microservices. I used **Resilience4j**.
+- **CLOSED:** Requests flow normally.
+- **OPEN:** If error rate crosses 50%, the circuit opens. No requests are sent; calls fail immediately (saving resources).
+- **HALF-OPEN:** After a wait time, it lets a few requests pass to check if the service is back up.
+
+**Configuration:**
+```yaml
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5 # Check last 5 calls
+        failureRateThreshold: 50 # If 50% fail, open circuit
+        waitDurationInOpenState: 5s # Wait 5s before retrying
