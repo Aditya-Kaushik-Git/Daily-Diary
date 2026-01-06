@@ -1,0 +1,38 @@
+#### **Day 50: Building the First REST API**
+```markdown
+# Day 50: Hello World in Spring Boot
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `@SpringBootApplication` annotation.
+2. Creating a REST Controller (`@RestController`).
+3. Handling GET Requests (`@GetMapping`).
+4. Running the application on Localhost:8080.
+
+**Learning Summary:**
+Today I combined everything to build my first web endpoint! I used `@RestController` to define a web layer. I created a simple method that returns a String and mapped it to a URL using `@GetMapping`. When I ran the main class, the embedded Tomcat server started, and I could see my message in the browser.
+
+**Code Snippet:**
+```java
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class Day50Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Day50Application.class, args);
+    }
+
+    // Endpoint: http://localhost:8080/hello
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello! I have completed 50 Days of Code!";
+    }
+}
