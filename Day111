@@ -1,0 +1,20 @@
+# Day 111: Need for Speed
+
+**Topics Covered:**
+1. Why Database calls are expensive.
+2. What is Caching? (Cache Hit vs Cache Miss).
+3. Introduction to **Redis** (Remote Dictionary Server).
+4. Setting up Redis using Docker.
+
+**Learning Summary:**
+Today I learned about performance optimization.
+- **Problem:** Fetching a user profile takes 200ms from MySQL (Disk I/O).
+- **Solution:** Store that profile in Redis (RAM). Fetching takes 5ms.
+Redis is an in-memory key-value store. I added a Redis container to my `docker-compose.yml` to start using it.
+
+**Docker Compose Snippet:**
+```yaml
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
