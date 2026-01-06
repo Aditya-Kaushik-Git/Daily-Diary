@@ -1,0 +1,22 @@
+# Day 119: Moving Beyond Console Logs
+
+**Topics Covered:**
+1. The problem with Log files in Microservices.
+2. What is the ELK Stack? (Elasticsearch, Logstash, Kibana).
+3. Structured Logging (JSON format).
+4. Using **Logback** to generate JSON logs.
+
+**Learning Summary:**
+In a Monolith, I could just check `app.log`. But in Microservices, I have 5 different services running in 5 containers. Checking 5 different log files is impossible. Today I learned the concept of **Centralized Logging**. We send all logs to one place (Elasticsearch) and view them in a UI (Kibana).
+To make this easier, logs should be in JSON format, not plain text.
+
+**Logback Configuration (logback-spring.xml):**
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
