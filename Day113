@@ -1,0 +1,28 @@
+# Day 113: Magic Caching with Annotations
+
+**Topics Covered:**
+1. Enabling Caching with `@EnableCaching`.
+2. `@Cacheable` (Read-through cache).
+3. How Spring intercepts the method call.
+4. Serializing Objects (Java `Serializable` interface).
+
+**Learning Summary:**
+Writing `RedisTemplate` code everywhere is messy. Today I learned the declarative way.
+I added `@Cacheable("products")` to my `getProductById` method.
+- **First Call:** Code runs, fetches from DB, saves to Redis, returns result.
+- **Second Call:** Spring sees data in Redis, *skips* the method execution entirely, and returns data from Redis instantly!
+
+**Code Snippet:**
+```java
+@Service
+public class ProductService {
+
+    @Autowired private ProductRepository repo;
+
+    // Cache result with key 'product::{id}'
+    @Cacheable(value = "products", key = "#id")
+    public Product getProduct(Long id) {
+        System.out.println("Fetching from Database..."); // Prints only once
+        return repo.findById(id).orElseThrow();
+    }
+}
