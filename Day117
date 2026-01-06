@@ -1,0 +1,19 @@
+# Day 117: Collecting Metrics
+
+**Topics Covered:**
+1. What is Prometheus? (Time-series database).
+2. Pull-based Architecture (Prometheus scrapes data).
+3. Adding `micrometer-registry-prometheus`.
+4. Verifying the `/actuator/prometheus` endpoint.
+
+**Learning Summary:**
+Actuator shows current data, but it doesn't store history. If the CPU spiked 5 hours ago, Actuator won't tell me. That's why I need **Prometheus**. It connects to my app every few seconds, reads the metrics, and stores them in its database with a timestamp.
+I added Micrometer dependency which formats Actuator data into a format Prometheus understands.
+
+**Code Snippet:**
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+    <scope>runtime</scope>
+</dependency>
