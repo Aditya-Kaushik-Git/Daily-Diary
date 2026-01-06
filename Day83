@@ -1,0 +1,15 @@
+# Day 83: Faking Dependencies with Mockito
+
+**Topics Covered:**
+1. The problem with dependencies (Service needs Repository).
+2. What is Mocking? (Creating dummy objects).
+3. `@Mock` vs `@InjectMocks`.
+4. The `Mockito` framework.
+
+**Learning Summary:**
+I faced a problem: How do I test my `UserService` without connecting to the real Database? If the DB is down, my test shouldn't fail. The solution is **Mockito**. It creates "fake" objects that simulate the behavior of real objects.
+- `@Mock`: Creates a fake object (e.g., Fake Repository).
+- `@InjectMocks`: Creates the real object (Service) and injects the mocks into it.
+
+**Concept:**
+We are testing the *logic* inside the Service, not the Database connection. So, we fake the DB interaction.
