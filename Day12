@@ -1,0 +1,46 @@
+#### **Day 12: OOPs Pillar 3 - Polymorphism**
+```markdown
+# Day 12: Polymorphism - One Name, Many Forms
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Compile-time Polymorphism (Method Overloading).
+2. Run-time Polymorphism (Method Overriding).
+3. The `@Override` annotation.
+4. Dynamic Method Dispatch.
+
+**Learning Summary:**
+Polymorphism allows objects to behave differently based on the context. 
+- **Overloading:** Same method name, different parameters (e.g., `add(int a, int b)` vs `add(int a, int b, int c)`).
+- **Overriding:** Child class provides a specific implementation of a method already defined in the Parent class.
+
+**Code Snippet:**
+```java
+class Payment {
+    void pay() {
+        System.out.println("Processing generic payment...");
+    }
+}
+
+class UPIPayment extends Payment {
+    @Override
+    void pay() {
+        System.out.println("Processing payment via UPI.");
+    }
+}
+
+public class Day12 {
+    public static void main(String[] args) {
+        // Run-time Polymorphism
+        Payment p = new UPIPayment(); 
+        p.pay(); // Output: Processing payment via UPI
+        
+        // Method Overloading Example
+        System.out.println(add(5, 10));
+        System.out.println(add(5, 10, 15));
+    }
+    
+    static int add(int a, int b) { return a + b; }
+    static int add(int a, int b, int c) { return a + b + c; }
+}
