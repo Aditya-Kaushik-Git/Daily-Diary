@@ -1,0 +1,27 @@
+# Day 123: Exposing the Application
+
+**Topics Covered:**
+1. The problem: Pod IPs change dynamically.
+2. What is a **Service**? (Stable IP/DNS).
+3. Types: **ClusterIP** (Internal), **NodePort** (External dev), **LoadBalancer** (Prod).
+4. Accessing the app from the browser.
+
+**Learning Summary:**
+Yesterday I deployed the app, but I couldn't access it because Pods are isolated inside the cluster. Today I learned about **Services**. A Service sits in front of the Pods and acts like a permanent address. Even if Pods die and new ones come up with new IPs, the Service IP stays the same.
+I used **NodePort** to expose the app on a specific port of my laptop.
+
+**Code Snippet (service.yaml):**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-service
+spec:
+  selector:
+    app: springboot-app # Connects to the Deployment
+  type: NodePort      # Expose to outside world
+  ports:
+    - protocol: TCP
+      port: 80        # Service Port
+      targetPort: 8080 # Container Port
+      nodePort: 30007  # Access via localhost:30007
