@@ -1,0 +1,31 @@
+#### **Day 55: Response Entity & Status Codes**
+
+```markdown
+# Day 55: Professional API Responses
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Why returning just string/object is not enough.
+2. `ResponseEntity<T>` class.
+3. Controlling HTTP Status Codes (200, 201, 404, 500).
+4. Building custom headers.
+
+**Learning Summary:**
+An API should communicate clearly. If a user is created, I should return `201 Created`, not just `200 OK`. If a user isn't found, I should return `404`. Today I learned to use `ResponseEntity` to control the Status Code, Body, and Headers of the response explicitly.
+
+**Code Snippet:**
+```java
+@GetMapping("/check/{id}")
+public ResponseEntity<String> checkUser(@PathVariable int id) {
+    if (id < 0) {
+        // Return 400 Bad Request
+        return ResponseEntity.badRequest().body("ID cannot be negative");
+    } else if (id == 0) {
+        // Return 404 Not Found
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    } else {
+        // Return 200 OK
+        return ResponseEntity.ok("Valid User");
+    }
+}
