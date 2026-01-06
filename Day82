@@ -1,0 +1,36 @@
+#### **Day 82: Writing First JUnit Test**
+```markdown
+# Day 82: Assertions and Lifecycle Methods
+
+**Topics Covered:**
+1. The `@Test` annotation.
+2. Assertions (`assertEquals`, `assertTrue`, `assertThrows`).
+3. Lifecycle methods: `@BeforeEach`, `@AfterEach`.
+4. Testing a simple Calculator class.
+
+**Learning Summary:**
+Today I wrote my first test case. I created a simple `Calculator` class and wrote a test class for it. I learned that we don't use `System.out.println` to check results; we use **Assertions**. If `expected` matches `actual`, the test passes (Green); otherwise, it fails (Red).
+
+**Code Snippet:**
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculatorTest {
+
+    @Test
+    void testAddition() {
+        Calculator calc = new Calculator();
+        int result = calc.add(2, 3);
+        
+        // Asserting the result
+        assertEquals(5, result, "2 + 3 should be 5");
+    }
+
+    @Test
+    void testDivision() {
+        Calculator calc = new Calculator();
+        // Testing Exception handling
+        assertThrows(ArithmeticException.class, () -> calc.divide(10, 0));
+    }
+}
