@@ -1,0 +1,38 @@
+#### **Day 67: Fetching Data (GET Request Integration)**
+```markdown
+# Day 67: Displaying Backend Data on Frontend
+
+**Topics Covered:**
+1. Creating an endpoint in Spring Boot (`/api/products`).
+2. Using JavaScript `fetch()` to call that endpoint.
+3. Parsing JSON response.
+4. Rendering the list dynamically in HTML.
+
+**Learning Summary:**
+Today I successfully connected the dots. I created a list of products in my Database. Then, I wrote a JavaScript function to hit the Spring Boot API, get that list, and create HTML cards for each product dynamically. Seeing data travel from MySQL -> Java -> JSON -> JavaScript -> HTML was magical!
+
+**Code Snippet (Frontend - JS):**
+```javascript
+const apiUrl = "http://localhost:8080/api/products";
+
+async function loadProducts() {
+    try {
+        const response = await fetch(apiUrl);
+        const products = await response.json();
+
+        let output = "";
+        products.forEach(p => {
+            output += `
+                <div class="card">
+                    <h3>${p.name}</h3>
+                    <p>Price: $${p.price}</p>
+                </div>`;
+        });
+        
+        document.getElementById("product-container").innerHTML = output;
+    } catch (error) {
+        console.error("Error loading products:", error);
+    }
+}
+
+loadProducts();
