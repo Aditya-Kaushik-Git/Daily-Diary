@@ -1,0 +1,39 @@
+#### **Day 80: The Login Endpoint**
+```markdown
+# Day 80: Completing the Auth Flow
+
+**Topics Covered:**
+1. Creating an `AuthController`.
+2. `AuthenticationManager` bean.
+3. Authenticating credentials.
+4. Returning the JWT to the user.
+
+**Learning Summary:**
+Today I connected everything. I created a `/login` endpoint.
+1. User sends `{username, password}`.
+2. Spring's `AuthenticationManager` verifies the password (using BCrypt).
+3. If valid, I use `JwtUtil` to generate a token.
+4. I return the token to the user.
+The user can now use this token to access secured APIs like `/api/users`.
+
+**Code Snippet:**
+```java
+@RestController
+public class AuthController {
+
+    @Autowired private AuthenticationManager authenticationManager;
+    @Autowired private JwtUtil jwtUtil;
+
+    @PostMapping("/login")
+    public String login(@RequestBody AuthRequest authRequest) {
+        try {
+            authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid username or password");
+        }
+        // If auth successful, generate token
+        return jwtUtil.generateToken(authRequest.getUsername());
+    }
+}
