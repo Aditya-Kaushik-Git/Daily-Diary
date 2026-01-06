@@ -1,0 +1,15 @@
+# Day 135: Consistency vs Availability
+
+**Topics Covered:**
+1. What is **Consistency**? (Everyone sees the same data at the same time).
+2. What is **Availability**? (System always responds, even if data is old).
+3. What is **Partition Tolerance**? (System works even if network cuts between servers).
+4. The Theorem: You can only pick 2 out of 3.
+
+**Learning Summary:**
+This is a famous theorem. Since "Partition Tolerance" (P) is mandatory in distributed systems (networks *will* fail), we have to choose between C and A.
+- **CP (Consistency + Partition Tolerance):** Banking apps. If the ATM network is down, show "Error" (don't show wrong balance).
+- **AP (Availability + Partition Tolerance):** Social Media. If network is slow, show an old post count (Availability is more important than exact accuracy).
+
+**Key Takeaway:**
+There is no "perfect" system, only trade-offs based on business needs.
