@@ -1,0 +1,42 @@
+#### **Day 17: Throw vs Throws & Custom Exceptions**
+```markdown
+# Day 17: Creating Custom Exceptions
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Difference between `throw` and `throws`.
+2. Creating User-Defined (Custom) Exceptions.
+3. Validating business logic (e.g., Age checks).
+
+**Learning Summary:**
+Sometimes Java's built-in exceptions aren't enough. Today I learned how to create my own exceptions (like `InvalidAgeException`). I also clarified the difference between `throw` (used to explicitly throw an exception) and `throws` (used in method signature to declare that an exception might occur).
+
+**Code Snippet:**
+```java
+// Custom Exception
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Day17 {
+    // Using 'throws' in method signature
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            // Using 'throw' to explicitly throw exception
+            throw new InvalidAgeException("Access Denied: You must be 18+");
+        } else {
+            System.out.println("Access Granted!");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15);
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception Caught: " + e.getMessage());
+        }
+    }
+}
