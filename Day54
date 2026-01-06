@@ -1,0 +1,32 @@
+#### **Day 54: Request Body & DTOs**
+```markdown
+# Day 54: Handling JSON Input with @RequestBody
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Sending JSON data from Client (Postman) to Server.
+2. The `@RequestBody` annotation.
+3. Deserialization (JSON -> Java Object).
+4. Concept of DTO (Data Transfer Object).
+
+**Learning Summary:**
+When creating a user, we can't send all details in the URL. Today I learned to use `@RequestBody` to accept a JSON object inside the HTTP body. I also learned about **DTOs**—simple classes used to define what data we expect from the user, keeping our internal database entities safe and separate.
+
+**Code Snippet:**
+```java
+class UserDTO {
+    public String username;
+    public String email;
+}
+
+@RestController
+@RequestMapping("/api/register")
+public class RegistrationController {
+
+    // Input JSON: {"username": "admin", "email": "admin@test.com"}
+    @PostMapping
+    public String register(@RequestBody UserDTO user) {
+        return "Registered User: " + user.username;
+    }
+}
