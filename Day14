@@ -1,0 +1,43 @@
+#### **Day 14: Interfaces (100% Abstraction)**
+```markdown
+# Day 14: Interfaces - The Blueprint of a Class
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Defining an `interface`.
+2. The `implements` keyword.
+3. Multiple Inheritance in Java using Interfaces.
+4. Differences between Abstract Class and Interface.
+
+**Learning Summary:**
+Interfaces are a contract. If a class implements an interface, it *must* provide bodies for all its methods. This is widely used in Spring Boot. Unlike classes, a class can implement *multiple* interfaces, solving the multiple inheritance problem.
+
+**Code Snippet:**
+```java
+interface Backend {
+    void connectDatabase();
+}
+
+interface Frontend {
+    void renderUI();
+}
+
+// Implementing multiple interfaces
+class FullStackApp implements Backend, Frontend {
+    public void connectDatabase() {
+        System.out.println("Connected to MySQL.");
+    }
+    
+    public void renderUI() {
+        System.out.println("Rendering HTML/CSS.");
+    }
+}
+
+public class Day14 {
+    public static void main(String[] args) {
+        FullStackApp app = new FullStackApp();
+        app.connectDatabase();
+        app.renderUI();
+    }
+}
