@@ -1,0 +1,36 @@
+#### **Day 44: Async/Await (Modern Syntax)**
+```markdown
+# Day 44: Writing Clean Async Code
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `async` keyword (Functions return a Promise).
+2. The `await` keyword (Pauses execution until Promise resolves).
+3. Error Handling with `try...catch` blocks.
+4. Why Async/Await is better than `.then()`.
+
+**Learning Summary:**
+While `.then()` works, chaining multiple requests looks messy. Today I learned `async/await`, introduced in ES8. It makes asynchronous code look like normal synchronous code. I used `try-catch` to handle errors, which felt very similar to Java's exception handling.
+
+**Code Snippet:**
+```javascript
+// Function simulating data fetch
+function fetchUser() {
+    return new Promise(resolve => setTimeout(() => resolve("Amit"), 1000));
+}
+
+// Modern Async Function
+async function displayUser() {
+    console.log("Fetching user...");
+    
+    try {
+        // Javascript waits here until promise resolves
+        const user = await fetchUser(); 
+        console.log("User found: " + user);
+    } catch (error) {
+        console.log("Something went wrong");
+    }
+}
+
+displayUser();
