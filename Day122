@@ -1,0 +1,33 @@
+# Day 122: Deploying Apps on K8s
+
+**Topics Covered:**
+1. What is a **Pod**? (Smallest unit of K8s).
+2. Pod vs Container (One Pod can have helper containers).
+3. What is a **Deployment**? (Manages Pods and Replicas).
+4. Writing `deployment.yaml`.
+
+**Learning Summary:**
+In Docker, we run "Containers". In K8s, we run "**Pods**". A Pod wraps the container.
+However, we rarely create Pods directly. We create a **Deployment**. The Deployment manages the Pods (e.g., handles updates, rollbacks). Today I wrote a YAML file to deploy my Spring Boot Docker image into the cluster.
+
+**Code Snippet (deployment.yaml):**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment
+spec:
+  replicas: 2 # Run 2 copies of the app
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+      - name: springboot-container
+        image: my-docker-hub-id/springboot-app:latest
+        ports:
+        - containerPort: 8080
