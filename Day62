@@ -1,0 +1,36 @@
+#### **Day 62: Transaction Management (@Transactional)**
+```markdown
+# Day 62: ACID Properties with Spring Boot
+
+
+**Topics Covered:**
+1. Concept of Transactions (Atomicity).
+2. The `@Transactional` annotation.
+3. Rollback scenarios (When things go wrong).
+4. Real-world example: Money Transfer.
+
+**Learning Summary:**
+What happens if money is deducted from Account A but fails to deposit in Account B due to an error? Today I learned about `@Transactional`. If I annotate a method with this, Spring ensures that either **all** steps complete successfully, or **none** of them happen (Rollback). This guarantees data consistency.
+
+**Code Snippet:**
+```java
+@Service
+public class PaymentService {
+
+    @Autowired
+    private AccountRepository accountRepo;
+
+    @Transactional // If any line fails, changes are rolled back
+    public void transferMoney(Long senderId, Long receiverId, Double amount) {
+        Account sender = accountRepo.findById(senderId).get();
+        Account receiver = accountRepo.findById(receiverId).get();
+
+        sender.debit(amount);
+        accountRepo.save(sender); // Step 1: Deduct
+
+        if (true) throw new RuntimeException("Server Crash!"); // Simulating Error
+
+        receiver.credit(amount); 
+        accountRepo.save(receiver); // Step 2: Add
+    }
+}
