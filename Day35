@@ -1,0 +1,47 @@
+#### **Day 35: Modern Layouts with Flexbox**
+
+```markdown
+# Day 35: Responsive Layouts using Flexbox
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `display: flex`.
+2. Justify Content (Main Axis alignment).
+3. Align Items (Cross Axis alignment).
+4. `flex-direction` (Row vs Column).
+
+**Learning Summary:**
+Before Flexbox, aligning items side-by-side using `float` was a nightmare. Today I learned Flexbox, which makes layout easy. By setting `display: flex` on a container, I can easily center items or spread them out. It is essential for making navigation bars and card grids.
+
+**Code Snippet:**
+```css
+/* Container */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Spreads items to edges */
+    align-items: center; /* Centers items vertically */
+    background-color: navy;
+    color: white;
+    padding: 10px 20px;
+}
+
+/* Child Items */
+.nav-links {
+    display: flex;
+    gap: 15px; /* Space between links */
+}
+
+
+
+
+---HTML---
+
+<nav class="navbar">
+    <div class="logo">MyBrand</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
