@@ -1,0 +1,42 @@
+#### **Day 30: JDBC CRUD Operations**
+```markdown
+# Day 30: Executing SQL Queries via Java
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `Statement` vs `PreparedStatement`.
+2. Executing INSERT, UPDATE, DELETE queries.
+3. Reading data using `ResultSet`.
+4. Preventing SQL Injection.
+
+**Learning Summary:**
+I learned how to manipulate data using Java. The most important lesson was using `PreparedStatement` instead of `Statement`. `PreparedStatement` pre-compiles the SQL and prevents SQL Injection attacks (where hackers inject malicious code via input fields). I successfully inserted data into my local database using Java code.
+
+**Code Snippet:**
+```java
+import java.sql.*;
+
+public class Day30 {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/testdb";
+        String user = "root";
+        String pass = "password";
+
+        String query = "INSERT INTO users (name, email) VALUES (?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            
+            // Setting values dynamically
+            pstmt.setString(1, "Amit");
+            pstmt.setString(2, "amit@example.com");
+            
+            int rowsAffected = pstmt.executeUpdate();
+            System.out.println("Rows Inserted: " + rowsAffected);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
