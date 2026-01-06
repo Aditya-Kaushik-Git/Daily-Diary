@@ -1,0 +1,36 @@
+# Day 98: Making Calls Easier with Feign
+
+**Topics Covered:**
+1. Why write boilerplate WebClient code?
+2. Introduction to **Spring Cloud OpenFeign**.
+3. Adding dependency `spring-cloud-starter-openfeign`.
+4. Creating a Feign Interface.
+
+**Learning Summary:**
+`WebClient` is powerful but requires writing a lot of code for simple requests. Today I learned about **OpenFeign**. It allows us to define an Interface that looks like a Controller, and Spring generates the implementation at runtime. It makes calling another microservice feel like calling a local method.
+
+**Code Snippet:**
+```java
+// 1. Enable Feign in Main Class
+@EnableFeignClients
+@SpringBootApplication
+public class OrderServiceApplication { ... }
+
+// 2. Create Interface
+@FeignClient(name = "USER-SERVICE") // Name from Eureka
+public interface UserClient {
+    
+    @GetMapping("/api/users/{id}")
+    UserDTO getUserById(@PathVariable("id") String id);
+}
+
+// 3. Use it in Service
+@Service
+public class OrderService {
+    @Autowired private UserClient userClient; // Just inject it!
+
+    public void createOrder(String userId) {
+        UserDTO user = userClient.getUserById(userId);
+        System.out.println("Ordering for: " + user.getName());
+    }
+}
