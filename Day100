@@ -1,0 +1,37 @@
+# Day 100: Setting up the Gateway
+
+**Topics Covered:**
+1. Creating a new project `api-gateway`.
+2. Dependency: `spring-cloud-starter-gateway` & Eureka Client.
+3. Configuring Routes in `application.yml`.
+4. Testing the single entry point.
+
+**Learning Summary:**
+Today I hit the **Century Milestone!** 💯
+I built the **Spring Cloud Gateway**. I configured it to register with Eureka so it knows where services are running. Then I defined "Routes".
+- If request comes to `/api/users/**` -> Send to `USER-SERVICE`.
+- If request comes to `/api/orders/**` -> Send to `ORDER-SERVICE`.
+
+**Configuration:**
+```yaml
+server:
+  port: 8080 # The only port exposed to outside world
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # Auto-detect services from Eureka
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE # Load Balanced URI
+          predicates:
+            - Path=/api/users/**
+        
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/orders/**
