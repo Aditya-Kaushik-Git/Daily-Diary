@@ -1,0 +1,35 @@
+#### **Day 49: Core Annotations (@Component & @Bean)**
+```markdown
+# Day 49: Spring Core Annotations
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Stereotype Annotations: `@Component`.
+2. Specialized Stereotypes: `@Service`, `@Repository`, `@Controller`.
+3. `@Configuration` and `@Bean` (Java-based config).
+4. Component Scanning.
+
+**Learning Summary:**
+How does Spring know which classes to manage? I learned about **Annotations**.
+- `@Component`: A generic annotation telling Spring "Hey, manage this class."
+- `@Service`: Used for business logic classes.
+- `@Repository`: Used for database access classes (DAO).
+- `@Bean`: Used when we want to configure a 3rd party class (where we can't add @Component).
+
+**Code Snippet:**
+```java
+// 1. Using Stereotype (Automatic detection)
+@Service
+public class EmailService {
+    public void sendEmail() { ... }
+}
+
+// 2. Using @Bean (Manual configuration)
+@Configuration
+class AppConfig {
+    @Bean
+    public Gson gson() {
+        return new Gson(); // External library object
+    }
+}
