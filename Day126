@@ -1,0 +1,16 @@
+# Day 126: Automating the Workflow
+
+**Topics Covered:**
+1. What is **CI** (Continuous Integration)? (Code -> Build -> Test).
+2. What is **CD** (Continuous Delivery/Deployment)? (Test -> Release -> Deploy).
+3. The "Integration Hell" problem.
+4. Tools: Jenkins vs GitHub Actions vs GitLab CI.
+
+**Learning Summary:**
+Today I learned that "It works on my machine" is not enough. When working in a team, merging code often breaks things.
+- **CI:** Whenever I push code, an automated server compiles it and runs tests. If tests fail, the merge is blocked.
+- **CD:** If CI passes, the code is automatically packaged (Docker Image) and sent to the server.
+I chose **GitHub Actions** because it is built right into my repository and is free for public projects.
+
+**Key Concept:**
+Automation reduces human error. I don't need to manually run `mvn test` anymore; the pipeline does it for me.
