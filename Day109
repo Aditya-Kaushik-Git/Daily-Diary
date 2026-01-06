@@ -1,0 +1,28 @@
+# Day 109: Writing the Producer Service
+
+**Topics Covered:**
+1. Adding `spring-kafka` dependency.
+2. Configuring `application.yml` for Kafka Producer.
+3. The `KafkaTemplate` class.
+4. Sending a JSON object as a message.
+
+**Learning Summary:**
+Today I made my `Order-Service` a Kafka Producer.
+1. Added the dependency.
+2. Configured the Broker URL (`localhost:9092`).
+3. Used `KafkaTemplate` to send an `OrderPlacedEvent` object to the `notificationTopic`.
+
+**Code Snippet:**
+```java
+@Service
+public class OrderProducer {
+
+    @Autowired
+    private KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
+    public void sendMessage(OrderEvent event) {
+        // Topic Name, Event Data
+        kafkaTemplate.send("notificationTopic", event);
+        System.out.println("Message sent to Kafka topic: " + event.getOrderId());
+    }
+}
