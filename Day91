@@ -1,0 +1,33 @@
+# Day 91: Running App and Database Together
+
+**Topics Covered:**
+1. The problem with running containers manually.
+2. What is `docker-compose`?
+3. Writing a `docker-compose.yml` file.
+4. Services, Networks, and Volumes in Compose.
+
+**Learning Summary:**
+Yesterday, I ran my App in a container, but it failed because it couldn't find the Database. Running a MySQL container separately and linking them manually via command line is painful. Today I learned about **Docker Compose**. It is a tool to define and run multi-container applications using a single YAML file.
+
+**Code Snippet:**
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  mysqldb:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3307:3306"
+
+  springboot-app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb # Ensures DB starts before App
+    environment:
+      # Using service name 'mysqldb' instead of localhost
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/mydb
