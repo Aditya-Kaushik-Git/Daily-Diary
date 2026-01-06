@@ -1,0 +1,38 @@
+#### **Day 33: Introduction to CSS (Styling)**
+```markdown
+# Day 33: Styling with CSS - Selectors and Colors
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Three ways to add CSS: Inline, Internal, External.
+2. CSS Selectors: Element, ID (`#`), Class (`.`).
+3. Colors (Hex codes, RGB) and Backgrounds.
+4. Font properties (`font-family`, `font-weight`).
+
+**Learning Summary:**
+HTML provides the structure, but CSS provides the style. Today I learned how to link a `.css` file to my HTML. The most important concept was "Selectors"—how to target specific elements to style them. I learned that ID selectors are unique, while Class selectors can be reused on multiple elements.
+
+**Code Snippet:**
+```css
+/* style.css */
+
+/* Element Selector */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Class Selector (Reusable) */
+.highlight {
+    color: white;
+    background-color: tomato;
+    padding: 5px;
+}
+
+/* ID Selector (Unique) */
+#main-header {
+    text-align: center;
+    color: #333;
+    border-bottom: 2px solid #333;
+}
