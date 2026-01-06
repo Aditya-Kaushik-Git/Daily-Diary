@@ -1,0 +1,32 @@
+# Day 120: Running the Monitoring Stack
+
+**Topics Covered:**
+1. Writing `docker-compose` for Prometheus + Grafana.
+2. Configuring `prometheus.yml`.
+3. Linking Spring Boot to the Monitoring Network.
+4. Viewing the health of the entire system.
+
+**Learning Summary:**
+Today I set up the complete monitoring infrastructure using Docker. I didn't install Prometheus or Grafana on my laptop; I just ran them as containers.
+
+**Docker Compose Snippet:**
+```yaml
+version: '3.8'
+services:
+  prometheus:
+    image: prom/prometheus
+    ports: ["9090:9090"]
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports: ["3000:3000"]
+    depends_on:
+      - prometheus
+scrape_configs:
+  - job_name: 'spring_micrometer'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['host.docker.internal:8080'] # Point to my Spring App
