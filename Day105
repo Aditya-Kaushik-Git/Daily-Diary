@@ -1,0 +1,24 @@
+# Day 105: Debugging in Microservices
+
+**Topics Covered:**
+1. The problem with logs in Microservices.
+2. Distributed Tracing concept (Trace ID vs Span ID).
+3. Using **Micrometer Tracing** (formerly Sleuth) and **Zipkin**.
+4. Visualizing the request flow.
+
+**Learning Summary:**
+Debugging a Monolith is easy (one log file). But in Microservices, one request hits Gateway -> Order -> User -> DB. If an error occurs, how do I find where? Today I learned about Distributed Tracing.
+- **Trace ID:** A unique ID assigned to the entire request chain.
+- **Span ID:** A unique ID for each individual service hop.
+I setup **Zipkin** (a UI tool) to visualize how much time the request spent in each service.
+
+**Code Snippet:**
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-tracing-bridge-brave</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.zipkin.reporter2</groupId>
+    <artifactId>zipkin-reporter-brave</artifactId>
+</dependency>
