@@ -1,0 +1,47 @@
+#### **Day 27: Thread Synchronization**
+```markdown
+# Day 27: Handling Race Conditions (Synchronization)
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Thread Safety issues (Race Conditions).
+2. The `synchronized` keyword.
+3. Synchronized Methods vs Synchronized Blocks.
+4. `wait()`, `notify()`, and `notifyAll()`.
+
+**Learning Summary:**
+When multiple threads try to modify the same data simultaneously, data corruption happens. This is called a "Race Condition." Today I learned to use the `synchronized` keyword, which ensures that only one thread can access a method or block at a time. It acts like a lock on the object.
+
+**Code Snippet:**
+```java
+class Counter {
+    int count = 0;
+
+    // Only one thread can access this at a time
+    public synchronized void increment() {
+        count++;
+    }
+}
+
+public class Day27 {
+    public static void main(String[] args) throws InterruptedException {
+        Counter c = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for(int i=0; i<1000; i++) c.increment();
+        });
+
+        Thread t2 = new Thread(() -> {
+            for(int i=0; i<1000; i++) c.increment();
+        });
+
+        t1.start();
+        t2.start();
+        
+        t1.join(); // Wait for t1 to finish
+        t2.join(); // Wait for t2 to finish
+        
+        System.out.println("Final Count: " + c.count); // Should be 2000
+    }
+}
