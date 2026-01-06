@@ -1,0 +1,40 @@
+#### **Day 13: OOPs Pillar 4 - Abstraction (Abstract Classes)**
+```markdown
+# Day 13: Abstraction using Abstract Classes
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is Abstraction? (Hiding implementation details).
+2. The `abstract` keyword.
+3. Abstract Methods (method with no body).
+4. Concrete Methods inside Abstract Classes.
+
+**Learning Summary:**
+Abstraction focuses on *what* an object does instead of *how* it does it. I learned that an `abstract` class cannot be instantiated (we can't make an object of it). It is meant to be a base for subclasses. If a class has an abstract method, the class itself must be abstract.
+
+**Code Snippet:**
+```java
+abstract class Shape {
+    abstract void draw(); // Abstract method (no body)
+    
+    void info() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a Circle");
+    }
+}
+
+public class Day13 {
+    public static void main(String[] args) {
+        // Shape s = new Shape(); // ERROR: Cannot instantiate abstract class
+        Shape s = new Circle();
+        s.draw();
+        s.info();
+    }
+}
