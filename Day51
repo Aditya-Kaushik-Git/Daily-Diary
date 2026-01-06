@@ -1,0 +1,39 @@
+# Day 51: Returning JSON Data
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `@Controller` (Used for Web Pages/Views).
+2. `@RestController` (Used for REST APIs/JSON).
+3. `@ResponseBody` annotation.
+4. How Spring Boot automatically converts Objects to JSON (Jackson library).
+
+**Learning Summary:**
+Today I clarified the difference between a traditional web app and a REST API.
+- `@Controller` expects to return a View (like `home.html`).
+- `@RestController` returns raw data (JSON/XML). It is a combination of `@Controller` + `@ResponseBody`.
+I created an endpoint that returns a Java Object (User), and Spring Boot automatically converted it into JSON format using the Jackson library.
+
+**Code Snippet:**
+```java
+@RestController
+@RequestMapping("/api")
+public class UserController {
+
+    // Returns JSON: {"name": "Amit", "role": "Developer"}
+    @GetMapping("/user")
+    public User getUser() {
+        return new User("Amit", "Developer");
+    }
+}
+
+// Simple POJO Class
+class User {
+    public String name;
+    public String role;
+    
+    public User(String name, String role) {
+        this.name = name;
+        this.role = role;
+    }
+}
