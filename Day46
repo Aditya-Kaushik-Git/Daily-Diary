@@ -1,0 +1,19 @@
+# Day 46: Why Spring Boot?
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Difference between Spring Framework and Spring Boot.
+2. The problem with old Spring (XML Configuration hell).
+3. Features of Spring Boot (Auto Configuration, Embedded Server).
+4. What is a "Starter Dependency"?
+
+**Learning Summary:**
+Today I stepped into the Framework world. I learned that Spring Boot is an extension of the Spring Framework that makes life easier. In standard Spring, we had to write huge XML files to configure beans and servers. Spring Boot does this automatically ("Opinionated Defaults"). It even comes with an embedded Tomcat server, so I don't need to install one separately.
+
+**Code Snippet:**
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
