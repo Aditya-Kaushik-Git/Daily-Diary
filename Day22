@@ -1,0 +1,40 @@
+#### **Day 22: Built-in Functional Interfaces**
+```markdown
+# Day 22: Predicate, Consumer, Supplier, and Function
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `@FunctionalInterface` annotation.
+2. `Predicate<T>`: Returns boolean (For checking conditions).
+3. `Consumer<T>`: Takes argument, returns nothing (For printing/saving).
+4. `Function<T, R>`: Takes argument, returns result (For transformation).
+5. `Supplier<T>`: Takes nothing, returns result (For providing values).
+
+**Learning Summary:**
+I learned that Java provides built-in functional interfaces in the `java.util.function` package so we don't have to create our own every time.
+- **Predicate:** Used for filters (e.g., check if age > 18).
+- **Function:** Used for mapping (e.g., convert String to Integer).
+- **Consumer:** Used for actions (e.g., print to console).
+
+**Code Snippet:**
+```java
+import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.function.Consumer;
+
+public class Day22 {
+    public static void main(String[] args) {
+        // Predicate: Check if number is even
+        Predicate<Integer> isEven = n -> n % 2 == 0;
+        System.out.println("Is 4 even? " + isEven.test(4));
+
+        // Function: Convert String length to Integer
+        Function<String, Integer> getLength = str -> str.length();
+        System.out.println("Length of 'Java': " + getLength.apply("Java"));
+
+        // Consumer: Print message
+        Consumer<String> printer = msg -> System.out.println("Printing: " + msg);
+        printer.accept("Hello World");
+    }
+}
