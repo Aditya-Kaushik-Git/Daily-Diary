@@ -1,0 +1,43 @@
+#### **Day 25: Optional Class and Date API**
+```markdown
+# Day 25: Handling Nulls and Dates Gracefully
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `NullPointerException` (NPE) problem.
+2. `Optional` class (`ofNullable`, `isPresent`, `orElse`).
+3. New Date/Time API: `LocalDate`, `LocalTime`, `LocalDateTime`.
+4. Why `java.util.Date` is deprecated/avoided.
+
+**Learning Summary:**
+`NullPointerException` is the most common error in Java. Today I learned about `Optional`, a container object that may or may not contain a non-null value. It forces us to handle the "value absent" case. I also looked at the new Date API which is immutable and thread-safe, unlike the old `Date` class.
+
+**Code Snippet:**
+```java
+import java.util.Optional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+public class Day25 {
+    public static void main(String[] args) {
+        String str = null;
+        
+        // Wrapping potentially null value
+        Optional<String> checkNull = Optional.ofNullable(str);
+
+        // Safe access
+        if (checkNull.isPresent()) {
+            System.out.println(checkNull.get().toUpperCase());
+        } else {
+            System.out.println("String is null, providing default value.");
+        }
+
+        // Better way using orElse
+        System.out.println(checkNull.orElse("Default String"));
+
+        // Date API
+        System.out.println("Today: " + LocalDate.now());
+        System.out.println("Current Time: " + LocalDateTime.now());
+    }
+}
