@@ -1,0 +1,38 @@
+#### **Day 45: The Fetch API (Connecting to the World)**
+```markdown
+# Day 45: Making HTTP Requests with Fetch
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `fetch()` function.
+2. HTTP Methods (GET by default).
+3. Handling the Response object (converting stream to JSON).
+4. Displaying API data on the HTML page.
+
+**Learning Summary:**
+Today is a milestone. I connected my frontend to a real API using `fetch()`. I learned that fetch returns a Promise. The response comes in two stages: first, the headers arrive (we check status), and then we parse the body using `.json()`. I fetched dummy data from `jsonplaceholder` and displayed it.
+
+**Code Snippet:**
+```javascript
+const url = "[https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)";
+
+async function loadData() {
+    try {
+        const response = await fetch(url);
+        
+        // Check if server responded with 200 OK
+        if (!response.ok) throw new Error("Status code: " + response.status);
+
+        const data = await response.json();
+        console.log("Title:", data.title);
+        
+        // Update DOM
+        document.getElementById("output").innerText = data.title;
+        
+    } catch (error) {
+        console.error("Fetch failed:", error);
+    }
+}
+
+loadData();
