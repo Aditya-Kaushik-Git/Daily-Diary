@@ -1,0 +1,39 @@
+#### **Day 29: JDBC Architecture & Connection**
+
+```markdown
+# Day 29: Introduction to JDBC (Java Database Connectivity)
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is JDBC? (API to connect Java with DBs).
+2. JDBC Architecture (Driver Manager, Driver, Connection).
+3. Types of JDBC Drivers.
+4. Establishing a connection with MySQL.
+
+**Learning Summary:**
+Today I stepped into the world of databases. JDBC acts as a bridge between my Java code and the database (like MySQL). I learned that I need a specific "Driver" (JAR file) for the database I am using. The `DriverManager` class helps in establishing the connection using a Connection URL, Username, and Password.
+
+**Code Snippet:**
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Day29 {
+    public static void main(String[] args) {
+        // Database credentials
+        String url = "jdbc:mysql://localhost:3306/testdb";
+        String user = "root";
+        String password = "password";
+
+        try {
+            // Establishing Connection
+            Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connection Established Successfully!");
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Connection Failed: " + e.getMessage());
+        }
+    }
+}
