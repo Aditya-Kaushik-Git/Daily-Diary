@@ -1,0 +1,32 @@
+#### **Day 40: Event Handling**
+```markdown
+# Day 40: Reacting to User Actions
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Event Listeners (`addEventListener`).
+2. Common Events: `click`, `mouseover`, `keydown`.
+3. The Event Object (`e`).
+4. Preventing Default Behavior (e.g., stopping form submit).
+
+**Learning Summary:**
+Today I made the webpage interactive. Instead of using `onclick` inside HTML (which is messy), I learned to use `addEventListener` inside the JS file. This keeps structure (HTML) and behavior (JS) separate. I built a small feature where clicking a button changes the background color.
+
+**Code Snippet:**
+```javascript
+const btn = document.querySelector("#myBtn");
+
+// Adding Event Listener
+btn.addEventListener("click", function(e) {
+    console.log("Button Clicked!");
+    document.body.style.backgroundColor = "#e0f7fa";
+});
+
+// Keydown event (Detecting keyboard input)
+document.addEventListener("keydown", (e) => {
+    console.log(`Key pressed: ${e.key}`);
+    if(e.key === "Enter") {
+        alert("Enter key pressed!");
+    }
+});
