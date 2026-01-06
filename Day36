@@ -1,0 +1,28 @@
+# Day 36: Making the Web Interactive
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is JavaScript? (Client-side scripting).
+2. Linking JS to HTML (`<script>` tag).
+3. Variables: `let`, `const`, and `var`.
+4. Outputting data: `console.log()`, `alert()`.
+
+**Learning Summary:**
+Today I started JavaScript. Unlike HTML/CSS which are static, JS makes the page dynamic. I learned that `var` is old and has scope issues, so modern developers use `let` (for changeable values) and `const` (for constants). I also learned to check the browser console (F12) for debugging errors.
+
+**Code Snippet:**
+```javascript
+// script.js
+
+// Using const for fixed values
+const appName = "My Daily Diary";
+
+// Using let for values that change
+let currentDay = 36;
+
+console.log("Welcome to " + appName);
+console.log("Current Progress: Day " + currentDay);
+
+// Alert box in browser
+// alert("JavaScript is linked successfully!");
