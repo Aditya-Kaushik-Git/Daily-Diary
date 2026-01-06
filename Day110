@@ -1,0 +1,24 @@
+# Day 110: Writing the Consumer Service
+
+**Topics Covered:**
+1. The `@KafkaListener` annotation.
+2. Deserializing JSON back to Java Object.
+3. Handling Consumer Groups.
+4. Processing the event (Simulating email sending).
+
+**Learning Summary:**
+Today I made the `Notification-Service` listen to Kafka.
+I used the `@KafkaListener` annotation on a method. Whenever a new message lands in `notificationTopic`, this method triggers automatically. It receives the `OrderEvent` object, and I wrote logic to "send an email" (print to console).
+
+**Code Snippet:**
+```java
+@Service
+public class NotificationConsumer {
+
+    @KafkaListener(topics = "notificationTopic", groupId = "notificationId")
+    public void handleNotification(OrderEvent event) {
+        // Logic to send email
+        System.out.println("Received Order Event for Order ID: " + event.getOrderId());
+        System.out.println("Sending Email to: " + event.getEmail());
+    }
+}
