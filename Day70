@@ -1,0 +1,22 @@
+#### **Day 70: Full Stack Mini-Project (Milestone)**
+```markdown
+# Day 70: Mini-Project - Employee Management System
+
+**Topics Covered:**
+1. Project Planning (Database Schema, API Endpoints, UI Design).
+2. Backend Implementation (Entity, Repo, Service, Controller).
+3. Frontend Implementation (HTML, CSS, JS Fetch).
+4. Testing the full flow.
+
+**Learning Summary:**
+Today I consolidated everything I learned in the last 70 days. I built a simple **Employee Management System**.
+- **Backend:** Spring Boot + MySQL (storing Name, Email, Department).
+- **Frontend:** A clean HTML page to View All Employees and Add New Employee.
+- **Integration:** Used Fetch API and handled CORS.
+
+**Project Logic Flow:**
+1. User opens page -> JS fetches data -> Spring Boot queries DB -> Data displayed.
+2. User adds employee -> JS sends JSON -> Spring Boot saves to DB -> Returns 201 Created.
+
+**Reflection:**
+I realized how powerful it feels to build the entire system from scratch. I am officially a Full Stack Developer (Beginner level)!
