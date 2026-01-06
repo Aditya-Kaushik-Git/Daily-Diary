@@ -1,0 +1,45 @@
+#### **Day 10: Encapsulation (Getters & Setters)**
+```markdown
+# Day 10: OOPs Pillar 1 - Encapsulation
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Concept of Encapsulation (Data Hiding).
+2. Access Modifiers: `private` vs `public`.
+3. Writing Getter and Setter methods.
+4. Why we should not access variables directly.
+
+**Learning Summary:**
+Encapsulation is about protecting the data. I learned that we should make class variables `private` so that no one can assign invalid values (like negative age) directly. Instead, we provide `public` methods (Setters) to validate and set the data, and Getters to retrieve it.
+
+**Code Snippet:**
+```java
+class BankAccount {
+    private double balance; // Data hidden
+
+    // Setter with validation logic
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid amount!");
+        }
+    }
+
+    // Getter
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class Day10 {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+        account.deposit(5000);
+        // account.balance = 10000; // This would show an ERROR
+        
+        System.out.println("Current Balance: " + account.getBalance());
+    }
+}
