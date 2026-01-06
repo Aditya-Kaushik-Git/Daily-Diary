@@ -1,0 +1,23 @@
+# Day 104: Giving It Another Shot
+
+**Topics Covered:**
+1. The **Retry** Pattern (Network blips).
+2. The **Time Limiter** Pattern (Timeout).
+3. Configuring Retry attempts and backoff (wait time).
+4. Combining Retry with Circuit Breaker.
+
+**Learning Summary:**
+Sometimes failure is temporary (like a 1-second network glitch). In such cases, opening the circuit immediately is aggressive. Today I implemented **Retry**. I told Spring: "If the request fails, wait 1 second and try again up to 3 times." I also added a **Time Limiter** to ensure no request takes longer than 2 seconds.
+
+**Configuration:**
+```yaml
+resilience4j:
+  retry:
+    instances:
+      userService:
+        maxRetryAttempts: 3
+        waitDuration: 2s
+  timelimiter:
+    instances:
+      userService:
+        timeoutDuration: 2s
