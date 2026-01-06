@@ -1,0 +1,35 @@
+#### **Day 7: Methods (Functions)**
+```markdown
+# Day 7: Modular Programming with Methods
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Defining Methods: Syntax and Structure.
+2. Return Types (`void` vs `int`, `String`, etc.).
+3. Method Parameters and Arguments.
+4. Code Reusability and DRY (Don't Repeat Yourself) principle.
+
+**Learning Summary:**
+Methods help break down complex logic into smaller, manageable blocks. Today I learned the difference between `void` methods (which just do a task) and methods that return a value. I wrote a method to calculate the factorial of a number, which I can now reuse anywhere in my code.
+
+**Code Snippet:**
+```java
+public class Day7 {
+    // Method to calculate sum
+    public static int addNumbers(int a, int b) {
+        return a + b;
+    }
+
+    // Method with no return type
+    public static void greetUser(String name) {
+        System.out.println("Hello, " + name + "! Welcome back.");
+    }
+
+    public static void main(String[] args) {
+        greetUser("Developer");
+        
+        int result = addNumbers(10, 25);
+        System.out.println("The sum is: " + result);
+    }
+}
