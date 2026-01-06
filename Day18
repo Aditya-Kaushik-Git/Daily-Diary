@@ -1,0 +1,34 @@
+#### **Day 18: String Handling (String vs StringBuilder)**
+```markdown
+# Day 18: Mastering Strings in Java
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. String Immutability (Why Strings can't be changed).
+2. String Constant Pool (Memory optimization).
+3. `StringBuilder` vs `StringBuffer` (Mutable strings).
+4. Common String methods (`substring`, `replace`, `split`).
+
+**Learning Summary:**
+I realized that normal `String` objects are immutable—every time I modify a string, a new object is created in memory. To solve performance issues during heavy string manipulation (like inside loops), I learned to use `StringBuilder`, which modifies the string in place and is much faster.
+
+**Code Snippet:**
+```java
+public class Day18 {
+    public static void main(String[] args) {
+        // Immutable String
+        String str = "Hello";
+        str.concat(" World"); 
+        System.out.println(str); // Output: Hello (Original not changed)
+
+        // Mutable StringBuilder
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        System.out.println(sb); // Output: Hello World (Modified in place)
+        
+        // Reversing a string easily
+        sb.reverse();
+        System.out.println("Reversed: " + sb);
+    }
+}
