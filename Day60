@@ -1,0 +1,27 @@
+#### **Day 60: JPQL and Native Queries**
+```markdown
+# Day 60: Writing Custom Logic with @Query
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `@Query` annotation.
+2. JPQL (Java Persistence Query Language).
+3. Native SQL Queries.
+4. `@Modifying` and `@Transactional` for updates.
+
+**Learning Summary:**
+Sometimes derived methods aren't enough for complex logic. Today I learned JPQL. It looks like SQL, but instead of table names, we use **Class Names**. It is database independent. I also learned how to execute raw SQL (Native Query) if absolutely necessary.
+
+**Code Snippet:**
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+    // 1. JPQL Query (Uses Class name 'Employee')
+    @Query("SELECT e FROM Employee e WHERE e.department = ?1")
+    List<Employee> getEmployeesByDept(String dept);
+
+    // 2. Native SQL Query (Uses Table name 'tbl_employees')
+    @Query(value = "SELECT * FROM tbl_employees WHERE full_name LIKE %?1%", nativeQuery = true)
+    List<Employee> searchByNameRaw(String keyword);
+}
