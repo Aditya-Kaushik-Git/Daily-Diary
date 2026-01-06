@@ -1,0 +1,18 @@
+# Day 81: Why Write Tests?
+
+**Topics Covered:**
+1. What is Unit Testing? (Testing small isolated blocks).
+2. The Testing Pyramid (Unit > Integration > E2E).
+3. JUnit 5 Framework Introduction.
+4. Setting up `pom.xml` dependencies (`spring-boot-starter-test`).
+
+**Learning Summary:**
+Today I started learning how to write automated tests. I learned that manually checking APIs with Postman every time I change code is slow and risky. **Unit Testing** allows me to test individual methods instantly. Spring Boot comes with `spring-boot-starter-test` which includes **JUnit 5** (Jupiter), the standard library for testing in Java.
+
+**Code Snippet:**
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
