@@ -1,0 +1,36 @@
+# Day 11: Inheritance - The "IS-A" Relationship
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Concept of Inheritance (Parent/Super Class vs Child/Sub Class).
+2. The `extends` keyword.
+3. `super` keyword to access parent class members.
+4. Types of Inheritance (Single, Multilevel, Hierarchical).
+
+**Learning Summary:**
+Today I learned how to reuse code effectively using Inheritance. If a generic class (like `Animal`) already exists, I can create a specific class (like `Dog`) that inherits all properties of `Animal` without rewriting code. This establishes a parent-child relationship.
+
+**Code Snippet:**
+```java
+// Parent Class
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Child Class
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class Day11 {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat();  // Inherited method
+        myDog.bark(); // Own method
+    }
+}
