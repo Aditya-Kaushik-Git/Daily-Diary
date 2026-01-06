@@ -1,0 +1,33 @@
+# Day 41: Building HTML with JavaScript
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Creating new nodes: `document.createElement()`.
+2. Adding content: `appendChild()` and `append()`.
+3. Removing elements: `remove()` and `removeChild()`.
+4. Manipulating CSS classes via `classList` (`add`, `remove`, `toggle`).
+
+**Learning Summary:**
+Today I learned that we don't always write HTML manually. In modern apps (like a To-Do list), elements are created dynamically when a user acts. I used `createElement` to make a new `div` and `appendChild` to add it to the body. I also learned how to toggle classes to create effects (like Dark Mode) without rewriting CSS rules.
+
+**Code Snippet:**
+```javascript
+function addTask() {
+    // 1. Create a new List Item
+    const newItem = document.createElement("li");
+    newItem.innerText = "Learn Fetch API";
+    newItem.classList.add("task-style"); // Add CSS class
+
+    // 2. Add delete button to it
+    const delBtn = document.createElement("button");
+    delBtn.innerText = "X";
+    delBtn.onclick = function() {
+        newItem.remove(); // Removes the element
+    };
+
+    newItem.appendChild(delBtn);
+
+    // 3. Attach to the main list
+    document.getElementById("taskList").appendChild(newItem);
+}
