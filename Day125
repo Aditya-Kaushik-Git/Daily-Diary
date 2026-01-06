@@ -1,0 +1,19 @@
+# Day 125: The Power of K8s
+
+**Topics Covered:**
+1. Manual Scaling (`kubectl scale`).
+2. Auto-Healing demonstration (Deleting a pod manually).
+3. Rolling Updates (Updating app with zero downtime).
+4. Rollback (Undoing a bad update).
+
+**Learning Summary:**
+Today I played with the real power of Kubernetes.
+1. **Scaling:** I ran `kubectl scale deployment springboot-deployment --replicas=5`. Within seconds, 3 new pods started.
+2. **Healing:** I manually deleted a pod. K8s noticed the count dropped to 4 (wanted 5), and immediately started a fresh replacement.
+3. **Rolling Update:** I updated the image version. K8s updated pods one by one, ensuring the app never went down completely.
+
+**Command:**
+`kubectl rollout undo deployment springboot-deployment` (Reverts to previous version if the new code crashes).
+
+**Milestone:**
+I now understand how massive companies like Google/Netflix manage their servers!
