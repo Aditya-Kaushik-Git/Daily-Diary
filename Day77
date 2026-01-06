@@ -1,0 +1,19 @@
+#### **Day 77: Introduction to JWT (JSON Web Token)**
+
+```markdown
+# Day 77: What is JWT?
+
+**Topics Covered:**
+1. Session-based vs Token-based Authentication.
+2. Structure of JWT (Header, Payload, Signature).
+3. Why JWT is stateless.
+4. When to use JWT.
+
+**Learning Summary:**
+Today I learned the theory behind JWT.
+- **Session (Old way):** Server stores login info in memory (RAM). If server restarts, everyone is logged out.
+- **JWT (New way):** Server generates a token and gives it to the client. The client saves it. For every request, the client shows this token. The server doesn't need to remember anything (Stateless).
+A JWT looks like `aaaaa.bbbbb.ccccc` (Header.Body.Signature).
+
+**Concept:**
+The **Signature** part ensures that no one tampered with the token. If a hacker changes the payload (e.g., changes role from "USER" to "ADMIN"), the signature validation will fail.
