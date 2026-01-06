@@ -1,0 +1,17 @@
+# Day 132: Distributing the Traffic
+
+**Topics Covered:**
+1. What is a Load Balancer (LB)?
+2. Algorithms: Round Robin, Least Connections, IP Hash.
+3. Layer 4 (Transport) vs Layer 7 (Application) LB.
+4. Health Checks.
+
+**Learning Summary:**
+If I have 5 servers, how does the user know which one to connect to? The **Load Balancer** sits at the entrance. It receives the request and forwards it to one of the backend servers.
+I learned about different algorithms:
+- **Round Robin:** Send to Server A, then B, then C, repeat.
+- **Least Connections:** Send to the server handling the fewest active requests.
+If a server crashes, the LB detects it (Health Check fails) and stops sending traffic there.
+
+**Tools:**
+Nginx, HAProxy, AWS ELB.
