@@ -1,0 +1,37 @@
+#### **Day 58: JpaRepository Interface**
+
+```markdown
+# Day 58: The Magic of JpaRepository
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Creating a Repository Interface.
+2. Extending `JpaRepository<Entity, ID_Type>`.
+3. Default methods: `save()`, `findAll()`, `findById()`, `deleteById()`.
+4. How Spring generates implementation at runtime.
+
+**Learning Summary:**
+This is where Spring Data JPA shines. I didn't write a single line of implementation logic. I just created an interface extending `JpaRepository`, and Spring automatically provided me with CRUD methods. I can now save objects to the database by just calling `.save()`.
+
+**Code Snippet:**
+```java
+// Repository Interface
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.demo.entity.Employee;
+
+// <Entity Class, Data Type of Primary Key>
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    // No code needed! CRUD methods are built-in.
+}
+Usage in Controller:
+
+Java
+
+@Autowired
+EmployeeRepository repo;
+
+@PostMapping("/add")
+public Employee addEmployee(@RequestBody Employee emp) {
+    return repo.save(emp); // SQL INSERT happens here automatically
+}
