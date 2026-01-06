@@ -1,0 +1,16 @@
+# Day 136: Moving to the Cloud
+
+**Topics Covered:**
+1. What is Cloud Computing? (IaaS, PaaS, SaaS).
+2. Introduction to **AWS** (Amazon Web Services).
+3. Core Services: **EC2** (Virtual Servers), **S3** (Storage), **RDS** (Database).
+4. Why companies prefer Cloud over own Data Centers.
+
+**Learning Summary:**
+Today I learned where modern apps live. Instead of buying physical servers, we rent them.
+- **EC2:** It's like a computer in the cloud. I can run my Docker container here.
+- **S3:** It's like Google Drive for apps. I can store user profile photos here.
+- **RDS:** It's a managed Database. AWS takes care of backups and patching.
+
+**Key Concept:**
+"Pay as you go". I only pay for the hours my server is running. This is perfect for startups and scaling applications.
