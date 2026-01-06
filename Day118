@@ -1,0 +1,16 @@
+# Day 118: Building Dashboards
+
+**Topics Covered:**
+1. What is Grafana? (Visualization Tool).
+2. Connecting Grafana to Prometheus.
+3. Importing pre-built Dashboards (ID: 4701 is popular for Spring Boot).
+4. Visualizing RPS (Requests Per Second) and Errors.
+
+**Learning Summary:**
+Raw data in Prometheus is hard to read. Today I used **Grafana**, which is a UI tool.
+1. I added Prometheus as a "Data Source" in Grafana.
+2. I created graphs to show "CPU Usage" and "API Response Time".
+3. I imported a community dashboard which instantly gave me professional charts for my Spring Boot app.
+
+**Concept:**
+**Spring Boot** (Generates Data) -> **Actuator** (Exposes Data) -> **Prometheus** (Collects Data) -> **Grafana** (Shows Data).
