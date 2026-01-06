@@ -1,0 +1,42 @@
+#### **Day 8: Introduction to OOPs (Classes & Objects)**
+```markdown
+# Day 8: Object-Oriented Programming - Classes & Objects
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Concept of OOPs (Real-world modeling).
+2. Creating a Class (The Blueprint).
+3. Creating an Object (The Instance).
+4. Accessing class attributes and methods via objects.
+
+**Learning Summary:**
+Today marks a major shift in my learning curve: OOPs. I learned that a Class is just a template (like a blueprint for a house), and an Object is the actual entity created from that template. I created a `Car` class with attributes like `color` and `model` and created multiple objects from it.
+
+**Code Snippet:**
+```java
+class Car {
+    String brand;
+    int speed;
+
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h.");
+    }
+}
+
+public class Day8 {
+    public static void main(String[] args) {
+        // Creating Object 1
+        Car myCar = new Car();
+        myCar.brand = "Tesla";
+        myCar.speed = 120;
+        
+        // Creating Object 2
+        Car anotherCar = new Car();
+        anotherCar.brand = "Toyota";
+        anotherCar.speed = 80;
+
+        myCar.drive();      // Tesla is driving...
+        anotherCar.drive(); // Toyota is driving...
+    }
+}
