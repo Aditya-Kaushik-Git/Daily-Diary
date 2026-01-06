@@ -1,0 +1,29 @@
+# Day 16: Handling Errors Gracefully
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is an Exception? (Checked vs Unchecked).
+2. `try`, `catch`, and `finally` blocks.
+3. Preventing program crashes.
+4. Exception Hierarchy (`Throwable` class).
+
+**Learning Summary:**
+Today I learned how to handle runtime errors so my application doesn't crash unexpectedly. I explored the `try-catch` block: the risky code goes in `try`, and the handling logic goes in `catch`. I also learned about the `finally` block, which executes regardless of whether an exception occurs (useful for closing connections).
+
+**Code Snippet:**
+```java
+public class Day16 {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[5]); // This throws ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Array index is out of bounds!");
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+        } finally {
+            System.out.println("Execution finished. Cleanup done.");
+        }
+    }
+}
