@@ -1,0 +1,35 @@
+#### **Day 52: Path Variables and Request Params**
+```markdown
+# Day 52: Reading Data from the URL
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Dynamic URLs.
+2. `@PathVariable` (for data inside the path, e.g., `/users/1`).
+3. `@RequestParam` (for query parameters, e.g., `/users?id=1`).
+4. Making parameters optional.
+
+**Learning Summary:**
+APIs need to be dynamic. Today I learned two ways to read data sent via the URL:
+- **Path Variable:** Used when the value is part of the resource identity (like an ID).
+- **Request Param:** Used for filtering or sorting (like `?page=2&sort=asc`).
+
+**Code Snippet:**
+```java
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+    // URL: localhost:8080/products/iphone
+    @GetMapping("/{pName}")
+    public String getProduct(@PathVariable String pName) {
+        return "Fetching details for: " + pName;
+    }
+
+    // URL: localhost:8080/products/search?price=5000
+    @GetMapping("/search")
+    public String searchProduct(@RequestParam(defaultValue = "0") int price) {
+        return "Showing products under price: " + price;
+    }
+}
