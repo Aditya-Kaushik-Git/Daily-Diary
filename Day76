@@ -1,0 +1,33 @@
+# Day 76: Implementing UserDetailsService
+
+**Topics Covered:**
+1. Why `InMemoryUserDetailsManager` is not enough.
+2. The `UserDetailsService` interface.
+3. Fetching user data from `UserRepository`.
+4. Converting Entity to `UserDetails` object.
+
+**Learning Summary:**
+Today I connected Spring Security to my MySQL database. Instead of hardcoding users, I implemented the `UserDetailsService` interface. This interface has a method `loadUserByUsername` which Spring calls automatically during login. Inside this method, I used my `UserRepository` to find the user and verify credentials.
+
+**Code Snippet:**
+```java
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepository repo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 1. Fetch User from DB
+        UserEntity user = repo.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        // 2. Return Spring Security User Object
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getUsername())
+                .password(user.getPassword()) // Hashed password from DB
+                .roles(user.getRole())
+                .build();
+    }
+}
