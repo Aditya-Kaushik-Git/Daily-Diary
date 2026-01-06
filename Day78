@@ -1,0 +1,31 @@
+# Day 78: Creating the JwtUtil Class
+
+**Topics Covered:**
+1. Adding `jjwt` dependency.
+2. Creating a Utility class for Token logic.
+3. Defining a Secret Key.
+4. Generating a signed token with Expiration time.
+
+**Learning Summary:**
+Today I wrote the code to generate tokens. I added the `io.jsonwebtoken` library. I created a `JwtUtil` class. This class takes a username, adds an expiration time (e.g., 10 hours), signs it with a secret key (like a digital signature), and returns the String token.
+
+**Code Snippet:**
+```java
+@Component
+public class JwtUtil {
+    private final String SECRET_KEY = "mySuperSecretKeyForSigningTokens123";
+
+    public String generateToken(String username) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 Hours
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .compact();
+    }
+    
+    // We will also need a method to extract username later
+    public String extractUsername(String token) {
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().getSubject();
+    }
+}
