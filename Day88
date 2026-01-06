@@ -1,0 +1,15 @@
+# Day 88: Solving "It Works on My Machine"
+
+**Topics Covered:**
+1. The Problem: Different environments (Windows Dev vs Linux Prod).
+2. What is a Container?
+3. Docker vs Virtual Machines (VMs).
+4. Installing Docker Desktop.
+
+**Learning Summary:**
+Why do we need Docker? Because often code runs fine on my laptop but breaks on the server due to different Java versions or OS settings. Docker solves this by packaging the App + Java + OS Libraries into a lightweight "Container".
+- **VM:** Virtualizes Hardware (Heavy, slow boot).
+- **Docker:** Virtualizes OS (Lightweight, instant start).
+
+**Concept:**
+Docker ensures that if it runs in a container on my machine, it will run exactly the same way on any server in the world.
