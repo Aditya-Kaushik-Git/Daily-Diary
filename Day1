@@ -1,0 +1,22 @@
+# Day 1: Java Environment Setup and First Program
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Understanding how Java works (JDK, JRE, JVM).
+2. Installing Java Development Kit (JDK 21) and IntelliJ IDEA.
+3. Writing the first "Hello World" program.
+4. Understanding the `public static void main(String[] args)` method.
+
+**Learning Summary:**
+Today marked the beginning of my 150-day coding challenge. I learned that Java is platform-independent because of the JVM (Java Virtual Machine). The source code (.java) is compiled into bytecode (.class), which runs on any machine.
+
+**Code Snippet:**
+```java
+public class Day1 {
+    // This is the main entry point of the program
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println("Starting my 150 Days of Code Challenge.");
+    }
+}
