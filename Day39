@@ -1,0 +1,34 @@
+#### **Day 39: DOM Manipulation (Part 1)**
+
+```markdown
+# Day 39: The Document Object Model (DOM)
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is the DOM? (Tree structure of HTML).
+2. Selecting elements: `getElementById`, `querySelector`.
+3. Changing content: `innerText` vs `innerHTML`.
+4. Changing styles via JS.
+
+**Learning Summary:**
+The DOM is the bridge between HTML and JavaScript. I learned how to "grab" an element from the HTML page using JS and modify it. `querySelector` is very powerful because it uses CSS selectors (like `.class` or `#id`) to find elements. I wrote a script to change the text of a heading.
+
+**Code Snippet:**
+```html
+<h1 id="main-heading">Old Text</h1>
+<button onclick="changeText()">Change Text</button>
+
+<script>
+    function changeText() {
+        // Selecting the element
+        const heading = document.querySelector("#main-heading");
+        
+        // Modifying content
+        heading.innerText = "Hello JavaScript World!";
+        
+        // Modifying style
+        heading.style.color = "blue";
+        heading.style.fontFamily = "Arial";
+    }
+</script>
