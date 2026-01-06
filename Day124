@@ -1,0 +1,22 @@
+# Day 124: Managing Configuration
+
+**Topics Covered:**
+1. Externalizing Configs (12-Factor App principle).
+2. **ConfigMap**: Storing plain text (URLs, Properties).
+3. **Secret**: Storing sensitive data (Passwords, Keys) encoded in Base64.
+4. Injecting them as Environment Variables.
+
+**Learning Summary:**
+Hardcoding database passwords in the Docker image is a security risk. Today I learned to use K8s **Secrets** and **ConfigMaps**.
+- I stored the DB URL in a ConfigMap.
+- I stored the DB Password in a Secret.
+Then, I updated my `deployment.yaml` to read these values and inject them into the Spring Boot application as environment variables (`SPRING_DATASOURCE_PASSWORD`).
+
+**Code Snippet:**
+```yaml
+env:
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: db-secret
+        key: password
