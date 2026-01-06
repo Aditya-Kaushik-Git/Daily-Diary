@@ -1,0 +1,27 @@
+# Day 130: Deploying to Production
+
+**Topics Covered:**
+1. Strategies for Deployment (SSH to VPS vs Kubernetes).
+2. Using `appleboy/ssh-action` to connect to a server.
+3. Pulling the new image and restarting the container.
+4. Zero Downtime concepts.
+
+**Learning Summary:**
+The final step: putting the app on a live server. Since I am using a simple VPS (like AWS EC2 or DigitalOcean), I used an SSH action.
+The pipeline connects to my server, runs `docker pull`, stops the old container, and starts the new one.
+(Note: For Kubernetes, we would use `kubectl set image` here).
+
+**Code Snippet:**
+```yaml
+  - name: Deploy to Server
+    uses: appleboy/ssh-action@master
+    with:
+      host: ${{ secrets.SERVER_IP }}
+      username: ${{ secrets.SERVER_USER }}
+      key: ${{ secrets.SSH_PRIVATE_KEY }}
+      script: |
+        docker pull my-docker-id/my-app:latest
+        docker stop my-app-container || true
+        docker rm my-app-container || true
+        docker run -d -p 80:8080 --name my-app-container my-docker-id/my-app:latest
+M
