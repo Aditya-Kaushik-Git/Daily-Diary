@@ -1,0 +1,31 @@
+#### **Day 65: Entity vs DTO Mapping**
+```markdown
+# Day 65: Creating a Clean API Structure
+
+**Topics Covered:**
+1. Why we shouldn't expose `@Entity` directly (Security & Recursion).
+2. Creating separate DTO (Data Transfer Object) classes.
+3. Mapping Entity -> DTO and DTO -> Entity.
+4. Using ModelMapper (Intro) or Manual Mapping.
+
+**Learning Summary:**
+I learned that exposing Database Entities directly in the API response is dangerous (e.g., exposing passwords or creation dates accidentally). It also causes issues with infinite loops in JSON. The best practice is to copy data from the Entity to a specialized "DTO" and return that. Today I did this mapping manually.
+
+**Code Snippet:**
+```java
+@Service
+public class ProductService {
+
+    public ProductDTO getProduct(Long id) {
+        // 1. Fetch Entity from DB
+        Product entity = repo.findById(id).orElseThrow();
+
+        // 2. Map Entity to DTO (Manual way)
+        ProductDTO dto = new ProductDTO();
+        dto.setName(entity.getName());
+        dto.setPrice(entity.getPrice());
+        // We excluded internal fields like 'created_at' or 'secret_code'
+        
+        return dto;
+    }
+}
