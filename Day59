@@ -1,0 +1,28 @@
+#### **Day 59: Derived Query Methods**
+```markdown
+# Day 59: Custom Queries without SQL
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Naming conventions for custom queries.
+2. `findByField`.
+3. `findByFieldAndField`.
+4. `findByFieldGreaterThan`.
+
+**Learning Summary:**
+What if I want to find an employee by Name instead of ID? Standard `findById` won't work. Today I learned about "Derived Query Methods". If I name my method correctly in the interface, Spring creates the SQL query for me automatically.
+
+**Code Snippet:**
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+    // Automatically executes: SELECT * FROM employee WHERE department = ?
+    List<Employee> findByDepartment(String dept);
+
+    // Automatically executes: SELECT * FROM employee WHERE name = ? AND department = ?
+    Employee findByNameAndDepartment(String name, String dept);
+
+    // Using keywords
+    List<Employee> findByIdGreaterThan(Long id);
+}
