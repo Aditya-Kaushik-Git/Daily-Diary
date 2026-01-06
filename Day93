@@ -1,0 +1,13 @@
+# Day 93: The Problem of Hardcoded URLs
+
+**Topics Covered:**
+1. Communication between Microservices.
+2. Why we can't use `localhost:8081` in production.
+3. What is Service Discovery? (The Phonebook of Microservices).
+4. Client-Side vs Server-Side Discovery.
+
+**Learning Summary:**
+In a microservices world, services scale up and down (dynamic IP addresses). If Service A wants to call Service B, it cannot hardcode Service B's IP address because it might change. Today I learned about **Service Discovery**. It acts like a live directory where every service registers itself ("I am User-Service, available at IP 10.0.0.5").
+
+**Concept:**
+Instead of calling a specific IP, Service A asks the Discovery Server: "Give me the address of Service B", and then connects.
