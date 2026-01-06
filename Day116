@@ -1,0 +1,24 @@
+# Day 116: Exposing Application Internals
+
+**Topics Covered:**
+1. What is Spring Boot Actuator?
+2. Adding `spring-boot-starter-actuator`.
+3. Critical Endpoints: `/actuator/health`, `/actuator/info`, `/actuator/metrics`.
+4. Exposing endpoints safely.
+
+**Learning Summary:**
+Today I learned that a running application is like a black box. To see inside it (CPU usage, memory, database health), we need **Actuator**. It adds production-ready endpoints to our app.
+- `/health`: Tells if the app is UP or DOWN.
+- `/metrics`: Shows JVM memory, thread count, and HTTP request stats.
+
+**Configuration:**
+```yaml
+# application.yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus # Expose these via HTTP
+  endpoint:
+    health:
+      show-details: always # Show DB/Disk space details
