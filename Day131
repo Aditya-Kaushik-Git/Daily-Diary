@@ -1,0 +1,16 @@
+# Day 131: Handling Growth
+
+**Topics Covered:**
+1. What happens when users increase from 100 to 1 Million?
+2. **Vertical Scaling (Scaling Up):** Adding more RAM/CPU to the existing server.
+3. **Horizontal Scaling (Scaling Out):** Adding more servers (machines) to the pool.
+4. Pros and Cons of each approach.
+
+**Learning Summary:**
+Today I learned the first rule of System Design.
+- **Vertical Scaling:** Easy to manage, but expensive and has a hardware limit (you can't upgrade RAM infinitely). Also, it has a Single Point of Failure.
+- **Horizontal Scaling:** Cheaper (commodity hardware), infinite scaling potential, but requires complex management (Load Balancers, Distributed Databases).
+Modern systems prefer Horizontal Scaling (Distributed Systems).
+
+**Analogy:**
+Vertical is like hiring a stronger horse. Horizontal is like hiring 10 normal horses to pull the cart together.
