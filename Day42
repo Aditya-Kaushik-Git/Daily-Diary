@@ -1,0 +1,32 @@
+#### **Day 42: JSON (JavaScript Object Notation)**
+```markdown
+# Day 42: The Language of Data - JSON
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is JSON? (Lightweight data interchange format).
+2. JSON vs JS Object (Key differences).
+3. Serialization: `JSON.stringify()` (JS Object -> JSON String).
+4. Deserialization: `JSON.parse()` (JSON String -> JS Object).
+
+**Learning Summary:**
+JSON is the standard format for sending data between a Server (Java) and Client (JS). Today I learned that while JSON looks like a JS object, the keys must be in double quotes `""`. I practiced converting my JS data into a JSON string to simulate sending it to a server, and parsing it back to use in my code.
+
+**Code Snippet:**
+```javascript
+// A standard JavaScript Object
+const user = {
+    id: 101,
+    name: "Amit",
+    skills: ["Java", "JS"]
+};
+
+// 1. Convert to JSON String (For sending to Server)
+const jsonString = JSON.stringify(user);
+console.log("Sent to Server:", jsonString);
+// Output: {"id":101,"name":"Amit","skills":["Java","JS"]}
+
+// 2. Convert back to Object (For using in App)
+const receivedData = JSON.parse(jsonString);
+console.log("User Name:", receivedData.name);
