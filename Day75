@@ -1,0 +1,33 @@
+#### **Day 75: Role-Based Access Control (RBAC)**
+```markdown
+# Day 75: Authorization (Who can do what?)
+
+**Topics Covered:**
+1. Authentication (Who are you?) vs Authorization (What can you do?).
+2. Restricting endpoints based on Roles.
+3. `.requestMatchers().hasRole("ADMIN")`.
+4. Allowing public access to specific URLs (like Register/Login).
+
+**Learning Summary:**
+Not everyone should be able to delete users. Today I implemented **Authorization**.
+- `/public` -> Accessible by everyone (No login needed).
+- `/api/users` (GET) -> Accessible by USER and ADMIN.
+- `/api/users` (DELETE) -> Accessible ONLY by ADMIN.
+
+**Code Snippet:**
+```java
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf().disable()
+        .authorizeHttpRequests()
+        // Order matters! Specific rules first.
+        .requestMatchers("/public/**").permitAll() 
+        .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
+        .requestMatchers("/api/users/**").hasAnyRole("USER", "ADMIN")
+        .anyRequest().authenticated()
+        .and()
+        .httpBasic();
+
+    return http.build();
+}
