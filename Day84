@@ -1,0 +1,39 @@
+# Day 84: Stubbing Methods with Mockito
+
+**Topics Covered:**
+1. Stubbing syntax: `when(...).thenReturn(...)`.
+2. Testing "Happy Path" (Success scenario).
+3. Testing Error scenarios (Exceptions).
+4. Verifying calls with `verify()`.
+
+**Learning Summary:**
+Today I tested my `UserService`. Since I am mocking the Repository, I have to tell Mockito what to do when a repository method is called. This is called **Stubbing**.
+"When `repo.save()` is called, don't go to the DB, just return this User object."
+
+**Code Snippet:**
+```java
+@ExtendWith(MockitoExtension.class)
+class UserServiceTest {
+
+    @Mock
+    private UserRepository repo; // Fake DB
+
+    @InjectMocks
+    private UserService service; // Real Service
+
+    @Test
+    void testRegisterUser() {
+        User user = new User("Amit", "amit@test.com");
+        
+        // Stubbing: When repo.save is called, return the user
+        when(repo.save(any(User.class))).thenReturn(user);
+
+        User savedUser = service.register(user);
+
+        assertNotNull(savedUser);
+        assertEquals("Amit", savedUser.getName());
+        
+        // Verify that repo.save was actually called once
+        verify(repo, times(1)).save(any(User.class));
+    }
+}
