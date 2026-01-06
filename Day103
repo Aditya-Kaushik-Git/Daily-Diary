@@ -1,0 +1,30 @@
+# Day 103: Handling Failures Gracefully
+
+**Topics Covered:**
+1. What is a Fallback?
+2. Defining a fallback method in Java.
+3. Returning cached or default data.
+4. Matching exception signatures.
+
+**Learning Summary:**
+If the Circuit Breaker opens, what should the user see? An error page? No! Today I learned about **Fallbacks**. Instead of throwing an exception, we execute a backup method. For example, if `User-Service` is down, `Order-Service` can return a default "Guest User" or data from a local cache instead of failing the order placement.
+
+**Code Snippet:**
+```java
+@Service
+public class OrderService {
+
+    @Autowired private UserClient userClient;
+
+    // If getUserById fails, call 'userFallback'
+    @CircuitBreaker(name = "userService", fallbackMethod = "userFallback")
+    public UserDTO getUser(String id) {
+        return userClient.getUserById(id);
+    }
+
+    // Fallback method (Must have same return type & arguments + Exception)
+    public UserDTO userFallback(String id, Throwable t) {
+        System.out.println("User Service is down, returning dummy user.");
+        return new UserDTO("default-id", "Guest User", "guest@mail.com");
+    }
+}
