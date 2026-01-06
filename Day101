@@ -1,0 +1,13 @@
+# Day 101: Why Systems Crash
+
+**Topics Covered:**
+1. What is a Cascading Failure?
+2. Thread Pool Exhaustion.
+3. The need for Fault Tolerance.
+4. Introduction to the **Circuit Breaker Pattern**.
+
+**Learning Summary:**
+Today I learned a scary reality of Microservices. If `Order-Service` calls `User-Service`, and `User-Service` is down or slow, `Order-Service` will keep waiting. Eventually, all threads in `Order-Service` will be stuck waiting, and `Order-Service` will also crash. This chain reaction is called **Cascading Failure**. To fix this, we need a **Circuit Breaker**—a mechanism that detects failures and stops sending requests temporarily.
+
+**Analogy:**
+It's like the fuse in your house. If there is a short circuit, the fuse blows (opens) to cut off electricity and save the expensive appliances.
