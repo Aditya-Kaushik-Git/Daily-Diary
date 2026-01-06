@@ -1,0 +1,21 @@
+# Day 90: My First Docker Container
+
+**Topics Covered:**
+1. `docker build` (Creating the Image).
+2. `docker run` (Creating the Container).
+3. Port Mapping (`-p host:container`).
+4. Viewing running containers (`docker ps`).
+
+**Learning Summary:**
+Today I executed the Dockerfile.
+1. **Build:** Created an "Image" (a read-only template) from my code.
+2. **Run:** Started a "Container" (a running instance) from that image.
+I had to map port 8080 of my laptop to port 8080 of the container so I could access it in the browser.
+
+**Terminal Commands:**
+```bash
+# 1. Build the image (naming it 'springboot-app')
+docker build -t springboot-app .
+
+# 2. Run the container (Map Laptop Port 8080 -> Container Port 8080)
+docker run -p 8080:8080 springboot-app
