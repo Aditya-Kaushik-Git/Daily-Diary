@@ -1,0 +1,38 @@
+# Day 26: Multitasking with Threads
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Process vs. Thread (Lightweight processes).
+2. Creating Threads: Extending `Thread` class.
+3. Creating Threads: Implementing `Runnable` interface.
+4. The `start()` vs `run()` method distinction.
+
+**Learning Summary:**
+Today I learned how to perform multiple tasks simultaneously in Java using Multithreading. This is crucial for performance. I learned two ways to create threads. Implementing `Runnable` is better because Java doesn't support multiple inheritance, so I can still extend another class if needed. I also learned that calling `run()` directly treats it like a normal method, whereas `start()` actually creates a new thread in memory.
+
+**Code Snippet:**
+```java
+class MyTask implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Task Running: " + i);
+            try { Thread.sleep(500); } catch (InterruptedException e) {}
+        }
+    }
+}
+
+public class Day26 {
+    public static void main(String[] args) {
+        MyTask task = new MyTask();
+        Thread thread = new Thread(task);
+        
+        thread.start(); // Starts a new thread
+        
+        // Main thread continues simultaneously
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Main Thread: " + i);
+        }
+    }
+}
