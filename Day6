@@ -1,0 +1,30 @@
+# Day 6: Handling Multiple Values with Arrays
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Declaring and initializing Single Dimensional Arrays.
+2. Accessing elements using Indexing (0-based).
+3. Iterating through arrays using For Loop and Enhanced For-Loop (For-Each).
+4. Basics of Multi-dimensional Arrays (2D Matrix).
+
+**Learning Summary:**
+Today I learned how to store multiple values of the same type in a single variable using Arrays. I realized that arrays have a fixed size once initialized. I also practiced the 'Enhanced For-Loop', which makes iterating through elements much cleaner and easier than the traditional loop.
+
+**Code Snippet:**
+```java
+public class Day6 {
+    public static void main(String[] args) {
+        // Declaration and Initialization
+        int[] marks = {85, 90, 78, 88, 92};
+        
+        System.out.println("Using Enhanced For-Loop:");
+        for (int score : marks) {
+            System.out.print(score + " ");
+        }
+        
+        System.out.println("\n\n2D Array Example:");
+        int[][] matrix = {{1, 2}, {3, 4}};
+        System.out.println("Element at (1,0): " + matrix[1][0]); // Output: 3
+    }
+}
