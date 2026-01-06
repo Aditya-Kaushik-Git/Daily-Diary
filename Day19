@@ -1,0 +1,38 @@
+#### **Day 19: Collections Framework - List Interface**
+
+```markdown
+# Day 19: Java Collections - ArrayList & LinkedList
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Introduction to Collections Framework.
+2. `ArrayList` (Dynamic Array).
+3. `LinkedList` (Doubly Linked List).
+4. Generics `<T>` (Type Safety).
+
+**Learning Summary:**
+Arrays are fixed in size, but `ArrayList` can grow dynamically. Today I started with the Collections Framework. I learned that `ArrayList` is best for searching data (fast access), while `LinkedList` is better for frequent insertions and deletions. I also used Generics `<String>` to ensure type safety.
+
+**Code Snippet:**
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Day19 {
+    public static void main(String[] args) {
+        // Creating a dynamic list
+        ArrayList<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Mango");
+        fruits.add("Banana");
+        
+        // Removing an item
+        fruits.remove("Mango");
+        
+        // Sorting the list
+        Collections.sort(fruits);
+        
+        System.out.println("Fruits List: " + fruits);
+    }
+}
