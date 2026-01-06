@@ -1,0 +1,34 @@
+#### **Day 5: Loops (For, While, Do-While)**
+```markdown
+# Day 5: Iterations and Loops
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `for` loop for fixed iterations.
+2. The `while` loop for unknown iterations.
+3. The `do-while` loop (executes at least once).
+4. Break and Continue statements.
+
+**Learning Summary:**
+Loops allow us to repeat tasks without rewriting code. I created a program to print the multiplication table of a number. I also learned about infinite loops and how to avoid them using proper increment/decrement conditions.
+
+**Code Snippet:**
+```java
+public class Day5 {
+    public static void main(String[] args) {
+        // Printing Table of 5 using For Loop
+        System.out.println("Table of 5:");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("5 x " + i + " = " + (5 * i));
+        }
+        
+        // While loop example
+        int count = 5;
+        while(count > 0) {
+            System.out.print(count + " ");
+            count--;
+        }
+        System.out.println("\nCountdown finished!");
+    }
+}
