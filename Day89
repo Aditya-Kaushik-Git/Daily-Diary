@@ -1,0 +1,30 @@
+# Day 89: Containerizing Spring Boot
+
+**Topics Covered:**
+1. What is a `Dockerfile`? (The blueprint).
+2. Key Instructions: `FROM`, `COPY`, `ENTRYPOINT`.
+3. Choosing a Base Image (OpenJDK).
+4. Exposing Ports.
+
+**Learning Summary:**
+Today I wrote my first Dockerfile. It tells Docker how to build an image for my Spring Boot app.
+1. **FROM:** Start with Java installed (OpenJDK).
+2. **COPY:** Copy my generated JAR file into the container.
+3. **ENTRYPOINT:** The command to run the app when container starts.
+
+**Code Snippet:**
+```dockerfile
+# Use a lightweight Java runtime as a parent image
+FROM openjdk:17-jdk-alpine
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file from target folder to the container
+COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port 8080
+EXPOSE 8080
+
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
