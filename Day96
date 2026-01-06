@@ -1,0 +1,13 @@
+# Day 96: The Need for Communication
+
+**Topics Covered:**
+1. Scenario: `Order-Service` needs User details from `User-Service`.
+2. Synchronous Communication (HTTP/REST).
+3. `RestTemplate` (Deprecated/Maintenance mode).
+4. Introduction to `WebClient` (The modern, non-blocking way).
+
+**Learning Summary:**
+Microservices are isolated. If I am placing an order, the `order-service` knows the `userId` but not the user's name or email. That data lives in `user-service`. Today I learned that services need to talk to each other over HTTP. While `RestTemplate` was used in the past, Spring now recommends **WebClient** (part of Spring WebFlux) because it supports both synchronous and asynchronous operations.
+
+**Key Concept:**
+We shouldn't use `localhost:8081` to call the other service. Instead, we should use the **Service Name** registered in Eureka (e.g., `http://USER-SERVICE/api/users/1`). This relies on Client-Side Load Balancing.
