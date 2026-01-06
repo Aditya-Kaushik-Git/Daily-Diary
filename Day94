@@ -1,0 +1,25 @@
+# Day 94: Creating a Discovery Server
+
+**Topics Covered:**
+1. Netflix Eureka (Spring Cloud Netflix).
+2. Setting up a new Spring Boot Project.
+3. Dependency: `spring-cloud-starter-netflix-eureka-server`.
+4. The `@EnableEurekaServer` annotation.
+
+**Learning Summary:**
+Today I started building my Microservices ecosystem. The first component is the **Eureka Server** (The Registry).
+1. Created a new project `discovery-server`.
+2. Added the Eureka Server dependency.
+3. Annotated the main class with `@EnableEurekaServer`.
+4. Configured it to not register itself (since it's the server, not a client).
+
+**Configuration:**
+```yaml
+# application.yml
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
