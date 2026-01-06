@@ -1,0 +1,13 @@
+# Day 133: Advanced Caching Patterns
+
+**Topics Covered:**
+1. Where to Cache? (Client, CDN, Server, Database).
+2. **Cache-Aside Pattern:** App checks cache, if miss, loads from DB and updates cache.
+3. **Write-Through:** Update Cache and DB simultaneously (Slow write, fast read).
+4. **Write-Back:** Update Cache first, update DB later asynchronously (Fast write, risk of data loss).
+
+**Learning Summary:**
+I already used Redis, but today I learned *strategies* on how to use it effectively.
+- **Cache-Aside** is the most common. It is resilient (if cache fails, app still works).
+- **Write-Back** is great for write-heavy apps (like analytics), but if the cache crashes before saving to DB, data is lost.
+I also learned about **CDN (Content Delivery Network)** which caches static files (images, CSS) closer to the user's location geographically.
