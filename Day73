@@ -1,0 +1,31 @@
+#### **Day 73: In-Memory Authentication**
+```markdown
+# Day 73: Custom Users and Passwords
+
+**Topics Covered:**
+1. Getting rid of the auto-generated password.
+2. `UserDetailsService` Interface.
+3. `InMemoryUserDetailsManager`.
+4. Creating multiple users (Admin vs User).
+
+**Learning Summary:**
+Using the random console password is annoying. Today I learned how to define my own users inside the code (In-Memory). I created two users: one 'admin' and one 'client'. This is good for testing but not for production (because hardcoding credentials is bad).
+
+**Code Snippet:**
+```java
+@Bean
+public UserDetailsService userDetailsService() {
+    UserDetails user1 = User.withDefaultPasswordEncoder()
+            .username("amit")
+            .password("1234")
+            .roles("USER")
+            .build();
+
+    UserDetails admin = User.withDefaultPasswordEncoder()
+            .username("admin")
+            .password("admin123")
+            .roles("ADMIN")
+            .build();
+
+    return new InMemoryUserDetailsManager(user1, admin);
+}
