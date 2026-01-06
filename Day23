@@ -1,0 +1,40 @@
+#### **Day 23: Stream API (Basics)**
+
+```markdown
+# Day 23: Processing Data with Stream API
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is a Stream? (Sequence of elements, not a data structure).
+2. Creating Streams from Lists/Arrays.
+3. Intermediate Operations: `filter()`, `map()`.
+4. Terminal Operation: `collect()`, `forEach()`.
+
+**Learning Summary:**
+The Stream API is a game-changer for processing collections. Instead of writing `for` loops and `if` conditions to filter data, I can create a pipeline.
+- `filter`: Selects elements based on a condition.
+- `map`: Transforms elements (e.g., lowercase to uppercase).
+- `collect`: Gathers the result back into a List.
+
+**Code Snippet:**
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Day23 {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Amit", "Rahul", "Ankit", "Deepak");
+
+        // 1. Filter names starting with 'A'
+        // 2. Convert to Uppercase
+        // 3. Collect into a new list
+        List<String> result = names.stream()
+                .filter(name -> name.startsWith("A"))
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+
+        System.out.println(result); // Output: [AMIT, ANKIT]
+    }
+}
