@@ -1,0 +1,13 @@
+# Day 99: The Front Door of the System
+
+**Topics Covered:**
+1. The problem with exposing multiple ports (8081, 8082, 8083) to the client.
+2. What is an API Gateway?
+3. Benefits: Routing, Security, Rate Limiting, Logging.
+4. Why we need a single entry point.
+
+**Learning Summary:**
+Right now, if a frontend app wants to get user info, it calls port 8081. For orders, it calls 8082. This is bad security and complex for the frontend. Today I learned about the **API Gateway**. It sits between the Client and the Microservices. The client only talks to the Gateway (e.g., port 8080), and the Gateway forwards the request to the correct service.
+
+**Analogy:**
+It's like the Receptionist in a large office building. You don't wander around looking for people; you ask the receptionist, and they direct you or call the person for you.
