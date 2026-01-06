@@ -1,0 +1,35 @@
+#### **Day 3: Operators and User Input**
+```markdown
+# Day 3: Arithmetic Operators and Scanner Class
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. Arithmetic Operators (+, -, *, /, %).
+2. Relational Operators (==, !=, >, <).
+3. Logical Operators (&&, ||, !).
+4. Taking user input using the `Scanner` class.
+
+**Learning Summary:**
+Today I made my programs interactive. Instead of hardcoding values, I used the `java.util.Scanner` class to take input from the console. I also played around with the Modulus operator (`%`) which is very useful for finding even/odd numbers.
+
+**Code Snippet:**
+```java
+import java.util.Scanner;
+
+public class Day3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        
+        // Using Modulus to check even/odd
+        if (num % 2 == 0) {
+            System.out.println(num + " is Even.");
+        } else {
+            System.out.println(num + " is Odd.");
+        }
+        sc.close();
+    }
+}
