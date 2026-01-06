@@ -1,0 +1,13 @@
+# Day 134: Scaling the Storage Layer
+
+**Topics Covered:**
+1. **Master-Slave Replication:** One Master (Writes), Multiple Slaves (Reads).
+2. **Sharding (Partitioning):** Splitting data across multiple databases (e.g., User A-M in DB1, N-Z in DB2).
+3. Consistent Hashing.
+4. Problems with Sharding (Complex joins).
+
+**Learning Summary:**
+Databases are the hardest bottleneck to scale.
+- **Replication:** Helps when we have too many *Reads*. All writes go to Master, data is copied to Slaves. Slaves handle read traffic.
+- **Sharding:** Helps when we have too much *Data* (Terabytes). We split the tables. For example, users from India go to Shard 1, users from USA go to Shard 2.
+Sharding makes "Join" queries very difficult because data is on different machines.
