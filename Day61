@@ -1,0 +1,43 @@
+Day 61: The Service Layer Pattern
+Markdown
+
+# Day 61: Decoupling Logic with @Service
+
+**Topics Covered:**
+1. Why we need a Service Layer (Separation of Concerns).
+2. The `@Service` annotation.
+3. Refactoring: Controller -> Service -> Repository.
+4. Keeping Controllers "lean" (clean).
+
+**Learning Summary:**
+Today I learned about architectural best practices. The Controller should only handle HTTP requests (Inputs/Outputs), and the Repository should only handle Database queries. The **Service Layer** sits in the middle to handle "Business Logic" (calculations, validations, flow). I moved my logic from the Controller to a new Service class.
+
+**Code Snippet:**
+```java
+@Service
+public class UserService {
+    
+    @Autowired
+    private UserRepository repo;
+
+    public User registerUser(User user) {
+        // Business Logic: Check if email exists
+        if(repo.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("Email already taken!");
+        }
+        return repo.save(user); // Call DB only if validation passes
+    }
+}
+
+// Controller becomes clean
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    @Autowired
+    private UserService service; // Controller talks to Service, not Repo
+
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return service.registerUser(user);
+    }
+}
