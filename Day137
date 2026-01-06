@@ -1,0 +1,17 @@
+# Day 137: "Login with Google"
+
+**Topics Covered:**
+1. The problem with handling passwords manually.
+2. What is **OAuth2**? (Authorization Framework).
+3. What is **OpenID Connect**? (Authentication Layer).
+4. Flow: Authorization Code Grant.
+
+**Learning Summary:**
+We implemented JWT earlier, but handling user passwords is risky. Today I learned about **OAuth2**. It allows users to log in using their existing accounts (Google/GitHub/Facebook).
+- **Resource Owner:** The User.
+- **Client:** My Application.
+- **Authorization Server:** Google/Facebook.
+My app gets an "Access Token" from Google to read the user's email, without ever seeing their password.
+
+**Analogy:**
+It's like giving a Valet Key to a parking attendant. The key opens the car door and starts the engine, but doesn't open the glove box or trunk.
