@@ -1,0 +1,26 @@
+#### **Day 74: Password Encoding (BCrypt)**
+```markdown
+# Day 74: Storing Passwords Securely
+
+**Topics Covered:**
+1. Why storing plain text passwords is a crime.
+2. Introduction to Hashing.
+3. `PasswordEncoder` Interface.
+4. Using `BCryptPasswordEncoder`.
+
+**Learning Summary:**
+Today I fixed the security flaw from yesterday. We should never store passwords as plain text ("1234"). Instead, we "Hash" them. I used **BCrypt**, which is a strong hashing algorithm. Even if a hacker gets the database, they won't know the real passwords because they are scrambled.
+
+**Code Snippet:**
+```java
+@Bean
+public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+
+// Inside User Definition
+UserDetails user = User.builder()
+        .username("amit")
+        .password(passwordEncoder().encode("1234")) // Hashes the password
+        .roles("USER")
+        .build();
