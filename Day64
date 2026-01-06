@@ -1,0 +1,32 @@
+#### **Day 64: Global Exception Handling**
+```markdown
+# Day 64: Handling Errors Globally (@ControllerAdvice)
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The problem with try-catch in every method.
+2. `@ControllerAdvice` (Global Interceptor).
+3. `@ExceptionHandler`.
+4. Formatting custom error responses.
+
+**Learning Summary:**
+My code was getting messy with `try-catch` blocks everywhere. Today I learned about `@ControllerAdvice`. It acts as a centralized place to handle exceptions for the entire application. If any controller throws a specific exception (like `UserNotFoundException`), this global handler catches it and returns a neat JSON error response.
+
+**Code Snippet:**
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    // Handles UserNotFoundException specifically
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFound(UserNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    // Handles all other generic exceptions
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericError(Exception ex) {
+        return new ResponseEntity<>("Something went wrong: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
