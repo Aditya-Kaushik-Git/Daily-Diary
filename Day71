@@ -1,0 +1,17 @@
+# Day 71: Securing the Application
+
+**Topics Covered:**
+1. Why Security is crucial? (Authentication vs Authorization).
+2. Adding `spring-boot-starter-security`.
+3. Default Login behavior.
+4. The generated password in Console.
+
+**Learning Summary:**
+Today I added the Spring Security dependency to my project. As soon as I restarted the server, everything got locked! I couldn't access my APIs anymore. I learned that Spring Security is "Secure by Default". It provides a default login page and generates a random password in the console logs. The default username is `user`.
+
+**Code Snippet:**
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
