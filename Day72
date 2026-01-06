@@ -1,0 +1,31 @@
+#### **Day 72: Basic Auth vs Form Login**
+```markdown
+# Day 72: Types of Authentication
+
+**Topics Covered:**
+1. Form-Based Authentication (Session-based, mainly for Websites).
+2. HTTP Basic Authentication (Stateless, mainly for APIs).
+3. Configuring `SecurityFilterChain`.
+4. Disabling CSRF (Cross-Site Request Forgery) for development.
+
+**Learning Summary:**
+Since I am building a REST API and using Postman, the default "Login Page" (Form Login) is not very useful. Today I learned about **Basic Auth**, where we send the username and password in the Header of every request. I configured the `SecurityFilterChain` bean to prioritize Basic Auth for my API endpoints.
+
+**Code Snippet:**
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable() // Disable CSRF for non-browser clients
+            .authorizeHttpRequests()
+            .anyRequest().authenticated() // Lock everything
+            .and()
+            .httpBasic(); // Enable Basic Auth
+        
+        return http.build();
+    }
+}
