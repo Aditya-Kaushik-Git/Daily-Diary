@@ -1,0 +1,30 @@
+# Day 114: Handling Stale Data
+
+**Topics Covered:**
+1. The problem of Stale Data (DB updated, Cache has old data).
+2. `@CacheEvict` (Delete from cache).
+3. `@CachePut` (Update cache).
+4. Deleting all entries with `allEntries = true`.
+
+**Learning Summary:**
+Caching has a downside: if I update a product in the DB, the cache still shows the old version. Today I handled cache consistency.
+- **@CachePut:** Updates the DB *and* the Cache.
+- **@CacheEvict:** Removes the entry from Cache when data is deleted/updated, forcing a fresh fetch next time.
+
+**Code Snippet:**
+```java
+@Service
+public class ProductService {
+
+    // When product is updated, clear the old cache entry
+    @CacheEvict(value = "products", key = "#product.id")
+    public Product updateProduct(Product product) {
+        return repo.save(product);
+    }
+
+    // Clear entire cache (e.g., after bulk update)
+    @CacheEvict(value = "products", allEntries = true)
+    public void clearCache() {
+        System.out.println("Cache Cleared");
+    }
+}
