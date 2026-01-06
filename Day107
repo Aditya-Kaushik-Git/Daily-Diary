@@ -1,0 +1,15 @@
+# Day 107: Kafka Architecture Basics
+
+**Topics Covered:**
+1. What is Kafka? (Distributed Streaming Platform).
+2. Core Concepts: **Topic**, **Producer**, **Consumer**, **Broker**.
+3. Partitions and Offsets.
+4. Consumer Groups.
+
+**Learning Summary:**
+Kafka is not just a queue; it's a log of events.
+- **Topic:** A category/folder name (e.g., `notification-topic`).
+- **Producer:** The service that sends data (Order Service).
+- **Consumer:** The service that reads data (Email Service).
+- **Broker:** The Kafka server that stores the data.
+I learned that messages in Kafka are stored permanently (for a set time), allowing consumers to read past messages too, unlike standard queues that delete messages once read.
