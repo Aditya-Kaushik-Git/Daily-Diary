@@ -1,0 +1,41 @@
+#### **Day 9: Constructors and `this` Keyword**
+```markdown
+# Day 9: Initializing Objects with Constructors
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. What is a Constructor? (Special method, same name as class).
+2. Default Constructor vs Parameterized Constructor.
+3. The `this` keyword to refer to the current object instance.
+4. Constructor Overloading.
+
+**Learning Summary:**
+I learned that Constructors are used to initialize objects immediately upon creation. It removes the need to manually set values line-by-line like I did yesterday. The `this` keyword was a bit confusing initially, but I understood it helps distinguish between class attributes and method parameters when they have the same name.
+
+**Code Snippet:**
+```java
+class Student {
+    String name;
+    int rollNo;
+
+    // Parameterized Constructor
+    Student(String name, int rollNo) {
+        this.name = name;      // 'this.name' refers to the class variable
+        this.rollNo = rollNo;
+    }
+
+    void display() {
+        System.out.println("Student: " + name + " | Roll No: " + rollNo);
+    }
+}
+
+public class Day9 {
+    public static void main(String[] args) {
+        Student s1 = new Student("Amit", 101);
+        Student s2 = new Student("Rahul", 102);
+
+        s1.display();
+        s2.display();
+    }
+}
