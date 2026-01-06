@@ -1,0 +1,40 @@
+#### **Day 53: HTTP Methods (POST, PUT, DELETE)**
+```markdown
+# Day 53: Full CRUD Operations Mappings
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `@PostMapping` (Create).
+2. `@PutMapping` (Update).
+3. `@DeleteMapping` (Delete).
+4. Idempotency in HTTP methods.
+
+**Learning Summary:**
+Today I moved beyond just GET requests. A standard REST API follows CRUD operations mapped to HTTP Verbs.
+- **POST:** Used to create new resources.
+- **PUT:** Used to update existing resources.
+- **DELETE:** Used to remove resources.
+I tested these endpoints using Postman because browsers only support GET by default in the address bar.
+
+**Code Snippet:**
+```java
+@RestController
+@RequestMapping("/users")
+public class UserCrudController {
+
+    @PostMapping
+    public String createUser() {
+        return "User Created Successfully!";
+    }
+
+    @PutMapping("/{id}")
+    public String updateUser(@PathVariable int id) {
+        return "User " + id + " Updated!";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable int id) {
+        return "User " + id + " Deleted!";
+    }
+}
