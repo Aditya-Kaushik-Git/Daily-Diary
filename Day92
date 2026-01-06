@@ -1,0 +1,15 @@
+# Day 92: Architecture Patterns
+
+**Topics Covered:**
+1. What is Monolithic Architecture? (Single JAR file).
+2. What are Microservices? (Distributed systems).
+3. Pros and Cons of each.
+4. When to switch to Microservices.
+
+**Learning Summary:**
+Up until now, I built a **Monolith**—User logic, Product logic, and Order logic were all in one project. Today I learned about **Microservices**. In this architecture, we split the application into small, independent services (e.g., `user-service`, `order-service`) that talk to each other.
+- **Monolith:** Easier to develop, harder to scale specific parts.
+- **Microservices:** Harder to manage, but highly scalable and fault-tolerant.
+
+**Analogy:**
+Monolith is like a super-store where everything is under one roof. Microservices are like a shopping mall with separate specialized shops.
