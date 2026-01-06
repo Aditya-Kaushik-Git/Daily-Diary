@@ -1,0 +1,34 @@
+# Day 97: Making Requests with WebClient
+
+**Topics Covered:**
+1. Adding `spring-boot-starter-webflux`.
+2. Configuring `WebClient.Builder` bean.
+3. The `@LoadBalanced` annotation (Crucial for Eureka).
+4. Fetching data from another service.
+
+**Learning Summary:**
+Today I wrote the code to connect two services.
+1. I created a configuration bean for `WebClient`.
+2. I added `@LoadBalanced`. This tells Spring: "Don't treat the URL as a real hostname. Look up this name in Eureka Server and find the IP address."
+3. I injected `WebClient` into my `OrderService` and called the `User-Service`.
+
+**Code Snippet:**
+```java
+@Configuration
+public class WebClientConfig {
+    @Bean
+    @LoadBalanced // Magic annotation for Service Discovery
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
+    }
+}
+
+// Inside OrderService
+public UserDTO getUserDetails(String userId) {
+    return webClientBuilder.build()
+            .get()
+            .uri("http://USER-SERVICE/api/users/" + userId) // Using Service Name
+            .retrieve()
+            .bodyToMono(UserDTO.class) // Convert JSON to Java Object
+            .block(); // Block execution (Sync call)
+}
