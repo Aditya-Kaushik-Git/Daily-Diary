@@ -1,0 +1,24 @@
+# Day 87: Running Java Outside the IDE
+
+**Topics Covered:**
+1. Why we need a JAR (Java Archive) file.
+2. The `mvn package` command.
+3. Running the app using Terminal (`java -jar`).
+4. Passing arguments via command line.
+
+**Learning Summary:**
+Servers don't have IntelliJ installed. To run my Spring Boot app on a server, I need to package it into a single executable file. Today I used the terminal to build my project.
+1. Command: `mvn clean package`
+2. Result: A `.jar` file was created inside the `target` folder.
+3. Run: I ran it using `java -jar my-app.jar`.
+
+**Terminal Commands:**
+```bash
+# 1. Build the project (skipping tests for speed if needed)
+mvn clean package -DskipTests
+
+# 2. Navigate to target folder
+cd target
+
+# 3. Run the application
+java -jar demo-0.0.1-SNAPSHOT.jar
