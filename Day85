@@ -1,0 +1,34 @@
+# Day 85: Integration Testing with MockMvc
+
+**Topics Covered:**
+1. What is `MockMvc`? (Simulating HTTP requests).
+2. `@WebMvcTest` annotation.
+3. Testing Endpoints (`GET`, `POST`).
+4. Checking Status Codes and Response Body.
+
+**Learning Summary:**
+How do we test Controllers? We can't easily start the server for every test. Today I learned about `MockMvc`. It allows us to send fake HTTP requests to our controllers and assert the response. I tested if my `/hello` endpoint returns status 200 and the correct message.
+
+**Code Snippet:**
+```java
+@WebMvcTest(UserController.class)
+class UserControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private UserService service; // Mocking the service layer
+
+    @Test
+    void testGetUser() throws Exception {
+        // Prepare data
+        User user = new User("Amit", "Dev");
+        when(service.getUserById(1)).thenReturn(user);
+
+        // Perform GET Request
+        mockMvc.perform(get("/users/1"))
+                .andExpect(status().isOk()) // Expect 200 OK
+                .andExpect(jsonPath("$.name").value("Amit")); // Check JSON content
+    }
+}
