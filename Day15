@@ -1,0 +1,38 @@
+#### **Day 15: Static and Final Keywords**
+```markdown
+# Day 15: Memory Management and Constants
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. `static` variable and methods (Class level vs Object level).
+2. Static Block.
+3. `final` variable (Constant).
+4. `final` method (prevent overriding) and `final` class (prevent inheritance).
+
+**Learning Summary:**
+Today I deep-dived into memory management keywords.
+- **Static:** Belongs to the class, not the object. Shared among all instances. Good for counters or utility methods.
+- **Final:** Used to create constants. A final variable's value cannot be changed once assigned.
+
+**Code Snippet:**
+```java
+class Counter {
+    static int count = 0; // Shared across all objects
+    final double PI = 3.14159; // Constant
+    
+    Counter() {
+        count++; // Increments the static variable
+    }
+}
+
+public class Day15 {
+    public static void main(String[] args) {
+        new Counter();
+        new Counter();
+        new Counter();
+        
+        // Accessed using Class Name, not object
+        System.out.println("Total Objects Created: " + Counter.count);
+    }
+}
