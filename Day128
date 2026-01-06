@@ -1,0 +1,25 @@
+# Day 128: Continuous Integration (CI) for Spring Boot
+
+**Topics Covered:**
+1. Setting up JDK in the runner.
+2. Running Maven commands (`mvn clean verify`).
+3. Caching dependencies (to speed up builds).
+4. Failing the pipeline on Test Failure.
+
+**Learning Summary:**
+Today I made the pipeline useful. I configured it to set up Java 17 and run my JUnit tests automatically.
+Now, if I make a mistake in my code and push it, the pipeline will fail (Red X), and I will get an email notification. This ensures that the `main` branch always contains working code.
+
+**Code Snippet:**
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  
+  - name: Set up JDK 17
+    uses: actions/setup-java@v3
+    with:
+      java-version: '17'
+      distribution: 'temurin'
+      
+  - name: Build with Maven
+    run: mvn clean package
