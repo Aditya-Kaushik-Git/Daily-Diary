@@ -1,0 +1,39 @@
+#### **Day 32: HTML Forms and Input Handling**
+```markdown
+# Day 32: Creating Interactive Forms
+
+**Date:** [Insert Date]
+
+**Topics Covered:**
+1. The `<form>` tag and its attributes (`action`, `method`).
+2. Input types: `text`, `password`, `email`, `date`, `radio`.
+3. The `<label>` tag for accessibility.
+4. Buttons and form submission.
+
+**Learning Summary:**
+Forms are crucial because this is how users send data to our Java backend. I learned about the `name` attribute in input tags—this acts as the key when data is sent to the server (e.g., Spring Boot controller). I also learned the difference between `GET` (data in URL) and `POST` (secure data transfer) methods.
+
+**Code Snippet:**
+```html
+<h2>Registration Form</h2>
+<form action="/submit-data" method="POST">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+
+    <div>
+        <label for="pwd">Password:</label>
+        <input type="password" id="pwd" name="password" minlength="8">
+    </div>
+
+    <div>
+        <p>Gender:</p>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
