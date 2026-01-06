@@ -1,0 +1,28 @@
+# Day 112: Connecting Spring Boot to Redis
+
+**Topics Covered:**
+1. Adding `spring-boot-starter-data-redis`.
+2. Configuring host and port in `application.yml`.
+3. The `RedisTemplate` class.
+4. CRUD operations on Redis manually.
+
+**Learning Summary:**
+Today I connected my app to Redis. I used `RedisTemplate` to save and retrieve data manually. It works just like a `HashMap` but runs on a server.
+- `opsForValue().set(key, value)` -> Save data.
+- `opsForValue().get(key)` -> Get data.
+
+**Code Snippet:**
+```java
+@Configuration
+public class RedisConfig {
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory);
+        return template;
+    }
+}
+
+// Usage
+redisTemplate.opsForValue().set("user:1", new User("Amit", "Dev"));
+User u = (User) redisTemplate.opsForValue().get("user:1");
